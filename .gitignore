@@ -1,0 +1,10 @@
+target/
+node_modules/
+.DS_Store
+*.log
+package-server/node_modules/
+vscode-extension/node_modules/
+vscode-extension/out/
+# package-server/storage/ # Should we keep the storage? User said "everything". 
+# Maybe keep database.json but exclude the big zip files if any?
+# For now, let's keep it simple.

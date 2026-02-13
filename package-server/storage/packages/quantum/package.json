@@ -1,0 +1,80 @@
+{
+  "name": "quantum",
+  "version": "1.0.0",
+  "description": "Zenith standard library module: Quantum Computing - Advanced quantum operations and algorithms",
+  "main": "quantum.zn",
+  "fileName": "quantum.zn",
+  "author": "Zenith Quantum Team",
+  "license": "MIT",
+  "keywords": ["quantum", "computing", "qubit", "entanglement", "algorithms"],
+  "category": "advanced",
+  "dependencies": {
+    "math": ">=1.0.0",
+    "array": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zenith-lang/zenith",
+    "directory": "packages/quantum"
+  },
+  "homepage": "https://zenith-lang.org/packages/quantum",
+  "bugs": {
+    "url": "https://github.com/zenith-lang/zenith/issues",
+    "email": "quantum@zenith-lang.org"
+  },
+  "scripts": {
+    "test": "zenith test quantum.zn",
+    "run": "zenith run quantum.zn",
+    "build": "zenith build quantum.zn",
+    "install": "zenith install quantum"
+  },
+  "engines": {
+    "zenith": ">=1.0.0"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/zenith"
+  },
+  "contributors": [
+    {
+      "name": "Zenith Quantum Team",
+      "url": "https://zenith-lang.org/team"
+    },
+    {
+      "name": "Quantum Computing Community",
+      "url": "https://zenith-lang.org/community"
+    }
+  ],
+  "downloads": 0,
+  "created": "2026-02-12T14:30:00.000Z",
+  "updated": "2026-02-12T14:30:00.000Z",
+  "size": 5847,
+  "lines": 234,
+  "features": [
+    "Quantum bit representation",
+    "Quantum gate operations (Hadamard, Pauli X/Y/Z)",
+    "Quantum entanglement",
+    "Quantum measurement",
+    "Quantum circuit operations",
+    "Quantum Fourier Transform",
+    "Quantum error correction",
+    "Grover's search algorithm",
+    "Utility functions for qubit creation"
+  ],
+  "compatibility": {
+    "zenith": ">=1.0.0",
+    "platforms": ["linux", "macos", "windows"],
+    "architectures": ["x64", "arm64"]
+  },
+  "documentation": {
+    "readme": "https://zenith-lang.org/packages/quantum/README.md",
+    "api": "https://zenith-lang.org/packages/quantum/api.html",
+    "examples": "https://zenith-lang.org/packages/quantum/examples/"
+  },
+  "testing": {
+    "unit_tests": true,
+    "integration_tests": true,
+    "benchmark_tests": true,
+    "coverage": "95%"
+  }
+}

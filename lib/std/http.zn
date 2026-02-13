@@ -1,0 +1,20 @@
+// Zenith Standard Library — HTTP Module
+// Usage: import std.http
+// Uses curl via sys_exec for HTTP requests
+
+func get(url) {
+    return sys_exec("curl -s " + url)
+}
+
+func post(url, data) {
+    return sys_exec("curl -s -X POST -d '" + data + "' " + url)
+}
+
+func download(url, path) {
+    sys_exec("curl -s -o " + path + " " + url)
+    return fs_exists(path)
+}
+
+func head(url) {
+    return sys_exec("curl -sI " + url)
+}

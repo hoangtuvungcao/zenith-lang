@@ -1,0 +1,106 @@
+// Zenith Standard Library — Physics Module
+// Very basic physics functions
+
+// Constants
+func GRAVITY() {
+    return 9.81
+}
+
+func LIGHT_SPEED() {
+    return 299792458
+}
+
+// Basic mechanics (simplified)
+func kinetic_energy(mass, velocity) {
+    return mass * velocity * velocity / 2
+}
+
+func potential_energy(mass, height) {
+    return mass * GRAVITY() * height
+}
+
+func momentum(mass, velocity) {
+    return mass * velocity
+}
+
+func force(mass, acceleration) {
+    return mass * acceleration
+}
+
+func work(force, distance) {
+    return force * distance
+}
+
+func power_calc(work, time) {
+    if time == 0 {
+        return 0
+    }
+    return work / time
+}
+
+// Temperature conversions (simplified)
+func celsius_to_kelvin(celsius) {
+    return celsius + 273
+}
+
+func kelvin_to_celsius(kelvin) {
+    return kelvin - 273
+}
+
+func fahrenheit_to_celsius(fahrenheit) {
+    return (fahrenheit - 32) * 5 / 9
+}
+
+func celsius_to_fahrenheit(celsius) {
+    return celsius * 9 / 5 + 32
+}
+
+// Simple electricity (simplified)
+func ohms_law(voltage, resistance) {
+    if resistance == 0 {
+        return 0
+    }
+    return voltage / resistance
+}
+
+func power_electrical(voltage, current) {
+    return voltage * current
+}
+
+// Test function
+func test_physics_module() {
+    print("=== Physics Module Test ===")
+    
+    // Test constants
+    print("Earth gravity: " + str(GRAVITY()))
+    print("Speed of light: " + str(LIGHT_SPEED()))
+    
+    // Test mechanics
+    var ke = kinetic_energy(1000, 10)
+    print("Kinetic energy (1000kg, 10m/s): " + str(ke) + " J")
+    
+    var pe = potential_energy(1000, 10)
+    print("Potential energy (1000kg, 10m): " + str(pe) + " J")
+    
+    // Test temperature
+    var kelvin = celsius_to_kelvin(25)
+    print("25°C = " + str(kelvin) + " K")
+    
+    var celsius = kelvin_to_celsius(kelvin)
+    print("Back to Celsius: " + str(celsius) + "°C")
+    
+    var fahrenheit = celsius_to_fahrenheit(25)
+    print("25°C = " + str(fahrenheit) + "°F")
+    
+    // Test electricity
+    var current = ohms_law(12, 4)
+    print("Current (12V, 4Ω): " + str(current) + " A")
+    
+    var power = power_electrical(12, 3)
+    print("Power (12V, 3A): " + str(power) + " W")
+    
+    print("Physics module test completed successfully!")
+}
+
+// Run test
+test_physics_module()

@@ -1,0 +1,96 @@
+// Zenith Standard Library — Math Module
+// Usage: import std.math
+
+var PI = 3.141592653589793
+var E = 2.718281828459045
+
+func abs(x) {
+    if x < 0 {
+        return 0 - x
+    }
+    return x
+}
+
+func min(a, b) {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+func max(a, b) {
+    if a > b {
+        return a
+    }
+    return b
+}
+
+func clamp(x, lo, hi) {
+    return max(lo, min(x, hi))
+}
+
+func floor(x) {
+    return to_int(x)
+}
+
+func ceil(x) {
+    var f = floor(x)
+    if x > f {
+        return f + 1
+    }
+    return f
+}
+
+func round(x) {
+    return floor(x + 0.5)
+}
+
+func pow(base, exp) {
+    var result = 1
+    var i = 0
+    while i < exp {
+        result = result * base
+        i = i + 1
+    }
+    return result
+}
+
+func sqrt(x) {
+    if x < 0 {
+        return 0
+    }
+    if x == 0 {
+        return 0
+    }
+    if x == 1 {
+        return 1
+    }
+    var guess = x / 2
+    var i = 0
+    while i < 30 {
+        guess = (guess + x / guess) / 2
+        i = i + 1
+    }
+    return guess
+}
+
+func factorial(n) {
+    if n <= 1 {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+func sum(arr) {
+    var total = 0
+    var i = 0
+    while i < len(arr) {
+        total = total + arr[i]
+        i = i + 1
+    }
+    return total
+}
+
+func avg(arr) {
+    return sum(arr) / len(arr)
+}

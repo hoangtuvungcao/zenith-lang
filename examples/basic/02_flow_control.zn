@@ -1,0 +1,37 @@
+// 02_flow_control.zn - Control Flow
+
+func main() {
+    // 1. If / Else
+    var score = 85
+    print("Score: " + score)
+    
+    if (score >= 90) {
+        println(" - Grade: A")
+    } else if (score >= 80) {
+        println(" - Grade: B")
+    } else {
+        println(" - Grade: C")
+    }
+    
+    // 2. While Loop
+    println("\nCounting down:")
+    var count = 3
+    while (count > 0) {
+        println(count)
+        count = count - 1
+    }
+    println("Liftoff!")
+    
+    // 3. For Loop (Ranges)
+    println("\nRange loop 0..5:")
+    for i in 0..5 {
+        println("i = " + i)
+    }
+    
+    // 4. Iterating Arrays
+    var array = ["Zenith", "is", "cool"]
+    println("\nIterating array:")
+    for i in 0..len(array) {
+         println(array[i])
+    }
+}

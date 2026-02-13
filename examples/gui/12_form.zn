@@ -1,0 +1,118 @@
+// 12_form.zn - Simple Form Example
+// Demonstrates: Multiple inputs, form validation
+
+func build_form_ui(name, email, age, message) {
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Column",
+            "children": [
+            { "type": "Text", "text": "📝 Registration Form" } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Text", "text": "Name:" } ,
+                {
+                    "type": "TextField",
+                    "value": name,
+                    "on_change": "name_input"
+                }
+                ]
+            } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Text", "text": "Email:" } ,
+                {
+                    "type": "TextField",
+                    "value": email,
+                    "on_change": "email_input"
+                }
+                ]
+            } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Text", "text": "Age:" } ,
+                {
+                    "type": "TextField",
+                    "value": age,
+                    "on_change": "age_input"
+                }
+                ]
+            } ,
+
+            { "type": "Text", "text": message } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Button", "label": "Submit", "on_click": "submit" } ,
+                { "type": "Button", "label": "Clear", "on_click": "clear" }
+                ]
+            }
+            ]
+        }
+    }
+}
+
+func main() {
+    println("Starting Form...")
+
+    var state = create_state( {
+        "name": "",
+        "email": "",
+        "age": "18",
+        "message": "Please fill out the form"
+    } )
+
+    while (true) {
+        var current = get_state(state)
+        var name_val = current["name"]
+        var email_val = current["email"]
+        var age_val = current["age"]
+        var msg = current["message"]
+
+        render_ui(build_form_ui(name_val, email_val, age_val, msg))
+
+        var event = wait_for_event()
+
+        if (event["type"] == "input") {
+            if (event["id"] == "name_input") {
+                current["name"] = event["value"]
+                set_state(state, current)
+            }
+            else if (event["id"] == "email_input") {
+                current["email"] = event["value"]
+                set_state(state, current)
+            }
+            else if (event["id"] == "age_input") {
+                current["age"] = event["value"]
+                set_state(state, current)
+            }
+        }
+        else if (event["type"] == "click") {
+            if (event["id"] == "submit") {
+                if (len(current["name"]) > 0 && len(current["email"]) > 0) {
+                    current["message"] = "✅ Submitted: " + current["name"] + " (" + current["email"] + ")"
+                    set_state(state, current)
+                } else {
+                    current["message"] = "❌ Please fill all fields"
+                    set_state(state, current)
+                }
+            }
+            else if (event["id"] == "clear") {
+                current["name"] = ""
+                current["email"] = ""
+                current["age"] = "18"
+                current["message"] = "Form cleared"
+                set_state(state, current)
+            }
+        }
+    }
+}
+
+main()

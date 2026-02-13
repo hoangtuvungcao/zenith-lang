@@ -1,0 +1,118 @@
+// Phase D: Advanced GUI Widgets Demo
+// Showcase: MenuBar, StatusBar, SplitPane, Tree, and CodeEditor
+
+var state_code = create_state("func hello() { \n    print(\"Hello Zenith ! \")\n }")
+var state_status = create_state("Ready")
+var state_tree_open = create_state(true)
+
+func main() {
+    render_loop()
+}
+
+func render_loop() {
+    while true {
+        var ui = {
+            "type": "Column",
+            "spacing": 0,
+            "children": [
+            {
+                "type": "MenuBar",
+                "menus": [
+                {
+                    "title": "File",
+                    "items": [
+                    { "type": "Button", "label": "New File", "on_click": "new_file" } ,
+                    { "type": "Button", "label": "Open...", "on_click": "open_file" } ,
+                    { "type": "Separator" } ,
+                    { "type": "Button", "label": "Exit", "on_click": "exit_app" }
+                    ]
+                } ,
+                {
+                    "title": "Edit",
+                    "items": [
+                    { "type": "Button", "label": "Undo", "on_click": "undo" } ,
+                    { "type": "Button", "label": "Redo", "on_click": "redo" }
+                    ]
+                } ,
+                {
+                    "title": "Help",
+                    "items": [
+                    { "type": "Button", "label": "About Zenith", "on_click": "about" }
+                    ]
+                }
+                ]
+            } ,
+            {
+                "type": "SplitPane",
+                "orientation": "horizontal",
+                "left": {
+                    "type": "Column",
+                    "padding": 10,
+                    "children": [
+                    { "type": "Heading", "text": "Project Explorer", "level": 3 } ,
+                    {
+                        "type": "Tree",
+                        "label": "src",
+                        "open": get_state(state_tree_open),
+                        "children": [
+                        { "type": "Button", "label": "main.zn", "on_click": "select_main" } ,
+                        { "type": "Button", "label": "utils.zn", "on_click": "select_utils" }
+                        ]
+                    } ,
+                    {
+                        "type": "Tree",
+                        "label": "lib",
+                        "children": [
+                        { "type": "Button", "label": "std.zn" }
+                        ]
+                    }
+                    ]
+                } ,
+                "right": {
+                    "type": "Column",
+                    "padding": 10,
+                    "children": [
+                    { "type": "Heading", "text": "Editor", "level": 3 } ,
+                    {
+                        "type": "CodeEditor",
+                        "value": get_state(state_code),
+                        "on_change": "code_changed"
+                    }
+                    ]
+                }
+            } ,
+            {
+                "type": "StatusBar",
+                "children": [
+                { "type": "Text", "text": "Status: " + get_state(state_status), "size": 12 } ,
+                { "type": "Spacer" } ,
+                { "type": "Text", "text": "Zenith v2.0", "size": 12 }
+                ]
+            }
+            ]
+        }
+
+        render_ui(ui)
+        var event = wait_for_event()
+        handle_event(event)
+    }
+}
+
+func handle_event(event) {
+    if (is_null(event)) { return }
+    var action = event["id"]
+    var payload = event["value"]
+
+    if action == "code_changed" {
+        set_state(state_code, payload)
+        set_state(state_status, "Editing...")
+    } else if action == "new_file" {
+        set_state(state_status, "New file created")
+    } else if action == "exit_app" {
+        sys_exit(0)
+    } else if action == "select_main" {
+        set_state(state_status, "Selected main.zn")
+    } else if action == "about" {
+        set_state(state_status, "Zenith: The Future of Coding")
+    }
+}

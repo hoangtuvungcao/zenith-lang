@@ -1,0 +1,67 @@
+// Zenith Standard Library — Finance Module
+// Basic financial calculations
+
+import std.math
+
+// Interest calculations
+func simple_interest(principal, rate, time) {
+    return principal * rate * time
+}
+
+func compound_interest(principal, rate, time) {
+    return principal * pow(1 + rate, time)
+}
+
+// Investment calculations
+func future_value(present_value, rate, periods) {
+    return present_value * pow(1 + rate, periods)
+}
+
+func present_value(future_value, rate, periods) {
+    return future_value / pow(1 + rate, periods)
+}
+
+// ROI calculations
+func roi(gain, cost) {
+    if cost == 0 {
+        return 0
+    }
+    return (gain - cost) / cost * 100
+}
+
+// Tax calculations
+func tax_amount(amount, tax_rate) {
+    return amount * tax_rate
+}
+
+func after_tax_amount(amount, tax_rate) {
+    return amount - tax_amount(amount, tax_rate)
+}
+
+// Test function
+func test_finance_module() {
+    print("=== Finance Module Test ===")
+
+    var si = simple_interest(1000, 0.05, 2)
+    print("Simple interest: " + str(si))
+
+    var ci = compound_interest(1000, 0.05, 2)
+    print("Compound interest: " + str(ci))
+
+    var fv = future_value(1000, 0.07, 5)
+    print("Future value: " + str(fv))
+
+    var roi_val = roi(1500, 1000)
+    print("ROI: " + str(roi_val) + "%")
+
+    var tax = tax_amount(5000, 0.2)
+    print("Tax amount: " + str(tax))
+
+    var after_tax = after_tax_amount(5000, 0.2)
+    print("After tax amount: " + str(after_tax))
+
+    print("Finance module test completed successfully!")
+}
+
+// Run test
+test_finance_module()

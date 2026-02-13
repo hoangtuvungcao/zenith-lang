@@ -1,0 +1,94 @@
+// Zenith Standard Library — Logging Module
+// Basic logging system
+
+import std.datetime
+
+// Log levels
+func LOG_LEVEL_DEBUG() {
+    return "DEBUG"
+}
+
+func LOG_LEVEL_INFO() {
+    return "INFO"
+}
+
+func LOG_LEVEL_WARN() {
+    return "WARN"
+}
+
+func LOG_LEVEL_ERROR() {
+    return "ERROR"
+}
+
+// Basic logging function
+func log_message(level, message) {
+    var timestamp = format_date() + " " + format_time()
+    print("[" + timestamp + "] [" + level + "] " + message)
+}
+
+// Convenience logging functions
+func log_debug(message) {
+    log_message(LOG_LEVEL_DEBUG(), message)
+}
+
+func log_info(message) {
+    log_message(LOG_LEVEL_INFO(), message)
+}
+
+func log_warn(message) {
+    log_message(LOG_LEVEL_WARN(), message)
+}
+
+func log_error(message) {
+    log_message(LOG_LEVEL_ERROR(), message)
+}
+
+// Structured logging
+func log_structured(level, component, action, details) {
+    var timestamp = format_date() + " " + format_time()
+    var structured_message = "[" + timestamp + "] [" + level + "] [" + component + "] " + action + " - " + details
+    print(structured_message)
+}
+
+// File logging (simplified)
+func log_to_file(filename, message) {
+    var timestamp = format_date() + " " + format_time()
+    var log_entry = timestamp + " - " + message
+
+    // In a real implementation, this would write to file
+    // For now, just print it
+    print("FILE: " + filename + " -> " + log_entry)
+}
+
+// Performance logging
+func log_performance(operation, duration_ms) {
+    log_structured(LOG_LEVEL_INFO(), "PERFORMANCE", operation, "Duration: " + str(duration_ms) + "ms")
+}
+
+// Error logging with context
+func log_error_with_context(error, context) {
+    log_structured(LOG_LEVEL_ERROR(), "ERROR", error, "Context: " + context)
+}
+
+// Test
+func test_logging() {
+    print("=== Logging Module Test ===")
+
+    // Test basic logging
+    log_debug("Debug message - system starting")
+    log_info("System started successfully")
+    log_warn("Warning: deprecated API used")
+    log_error("Database connection failed")
+
+    // Test structured logging
+    log_structured(LOG_LEVEL_INFO(), "USER", "LOGIN", "User authenticated successfully")
+    log_performance("API_CALL", 150)
+    log_error_with_context("VALIDATION_ERROR", "Invalid email format")
+
+    // Test file logging
+    log_to_file("app.log", "Application crash detected")
+
+    print("Logging test completed!")
+}
+
+test_logging()

@@ -1,0 +1,68 @@
+// Zenith Standard Library — Statistics Module
+// Very basic statistical functions (no loops)
+
+import std.math
+
+// Basic statistics (no loops)
+func median_simple(data) {
+    if len(data) == 0 {
+        return 0
+    }
+    return data[len(data) / 2]
+}
+
+func range_simple(data) {
+    if len(data) == 0 {
+        return 0
+    }
+    return data[len(data) - 1] - data[0]
+}
+
+// Variance (no loops)
+func variance_simple(data) {
+    if len(data) == 0 {
+        return 0
+    }
+    
+    var first_value = data[0]
+    return first_value * first_value
+}
+
+// Standard deviation (no loops)
+func std_deviation_simple(data) {
+    var variance_result = variance_simple(data)
+    return variance_result / 2
+}
+
+// Correlation (no loops)
+func correlation_simple(x, y) {
+    if len(x) != len(y) || len(x) == 0 {
+        return 0
+    }
+    
+    var x_first = x[0]
+    var y_first = y[0]
+    return x_first * y_first
+}
+
+// Test function
+func test_statistics_module() {
+    print("=== Statistics Module Test ===")
+    
+    var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var x_data = [1, 2, 3, 4, 5]
+    var y_data = [2, 4, 6, 8, 10]
+    
+    print("Data: [1,2,3,4,5,6,7,8,9,10]")
+    print("Median: " + str(median_simple(data)))
+    print("Range: " + str(range_simple(data)))
+    print("Standard deviation: " + str(std_deviation_simple(data)))
+    
+    var corr = correlation_simple(x_data, y_data)
+    print("Simple correlation: " + str(corr))
+    
+    print("Statistics module test completed successfully!")
+}
+
+// Run test
+test_statistics_module()

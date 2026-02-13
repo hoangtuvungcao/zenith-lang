@@ -1,0 +1,13 @@
+[package]
+name = "zenith-codegen"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language code generation"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+zenith-mir = { path = "../zenith-mir" }
+llvm-sys = "180"
+inkwell = { version = "0.5", features = ["llvm18-0"] }
+thiserror = "1.0"

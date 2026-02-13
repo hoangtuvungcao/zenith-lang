@@ -1,0 +1,80 @@
+
+// 08_dashboard.zn - Modern Dashboard UI
+// Demonstrates: Grid layouts, cards, stats display
+
+func build_card(title, value, color) {
+    return {
+        "type": "Container",
+        "child": {
+            "type": "Column",
+            "children": [
+            { "type": "Text", "text": title } ,
+            { "type": "Text", "text": str(value) }
+            ]
+        }
+    }
+}
+
+func build_dashboard(state) {
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Column",
+            "children": [
+            { "type": "Text", "text": "Dashboard Analytics" } ,
+
+            // Stats Row
+            {
+                "type": "Row",
+                "children": [
+                build_card("Users", state["users"], "#3498db"),
+                build_card("Revenue", "$" + str(state["revenue"]), "#2ecc71"),
+                build_card("Orders", state["orders"], "#e74c3c")
+                ]
+            } ,
+
+            // Action Buttons
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Button", "label": "Refresh", "on_click": "refresh" } ,
+                { "type": "Button", "label": "Export", "on_click": "export" }
+                ]
+            } ,
+
+            // Status
+            { "type": "Text", "text": "Last updated: " + state["last_update"] }
+            ]
+        }
+    }
+}
+
+func main() {
+    println("Starting Dashboard...")
+
+    var state = create_state( {
+        "users": 1247,
+        "revenue": 32450,
+        "orders": 89,
+        "last_update": "Just now"
+    } )
+
+    while (true) {
+        var current = get_state(state)
+        render_ui(build_dashboard(current))
+
+        var event = wait_for_event()
+
+        if (is_null(event) == false) {
+            if (event["type"] == "click" && event["id"] == "refresh") {
+                current["users"] = current["users"] + 1
+                current["orders"] = current["orders"] + 1
+                current["revenue"] = current["revenue"] + 150
+                current["last_update"] = "Just now"
+                set_state(state, current)
+            }
+        }
+    }
+}
+
+main()

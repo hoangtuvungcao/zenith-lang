@@ -1,0 +1,7 @@
+{
+    "name": "io",
+    "version": "1.0.0",
+    "description": "Zenith standard library module: io",
+    "main": "io.zn",
+    "dependencies": []
+}

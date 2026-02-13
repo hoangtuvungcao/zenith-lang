@@ -1,0 +1,11 @@
+[package]
+name = "zenith-mir"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language mid-level intermediate representation"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+zenith-hir = { path = "../zenith-hir" }
+serde = { version = "1.0", features = ["derive"] }

@@ -1,0 +1,58 @@
+// Network Module Example
+// Hướng dẫn sử dụng Module Network từng bước
+
+import std.net
+
+print("=== Network Module Examples ===")
+print("")
+
+// 1. fetch() - HTTP GET đơn giản
+print("1. Sử dụng fetch() để tải nội dung web")
+var web_content = fetch("http://example.com")
+print("Độ dài nội dung: " + str(len(web_content)) + " ký tự")
+print("")
+
+// 2. check_connection() - Kiểm tra kết nối internet
+print("2. Kiểm tra kết nối internet")
+var is_connected = check_connection()
+print("Kết nối internet: " + str(is_connected))
+print("")
+
+// 3. post_json() - Gửi JSON data
+print("3. Gửi JSON data qua POST")
+var json_data = {"name": "Zenith", "type": "Language", "version": "1.0"}
+var json_response = post_json("http://httpbin.org/post", json_data)
+print("JSON POST response length: " + str(len(json_response)))
+print("")
+
+// 4. download_file() - Tải file
+print("4. Tải file từ URL")
+var file_url = "http://example.com"
+var save_path = "/tmp/zenith_download.html"
+var download_success = download_file(file_url, save_path)
+print("Tải file thành công: " + str(download_success))
+print("")
+
+// 5. get_status() - Lấy HTTP status code
+print("5. Lấy HTTP status code")
+var status = get_status("http://example.com")
+print("HTTP Status Code: " + str(status))
+print("")
+
+// 6. Ví dụ thực tế: Check multiple websites
+print("6. Kiểm tra nhiều website")
+var websites = [
+"http://example.com",
+"http://httpbin.org",
+"http://google.com"
+]
+
+for website in websites {
+    var site_status = get_status(website)
+    print(website + " - Status: " + str(site_status))
+}
+print("")
+
+print("=== Network Module Test Completed ===")
+print("Module Network cung cấp các hàm cấp cao cho thao tác mạng")
+print("Dựa trên curl và HTTP module bên dưới")

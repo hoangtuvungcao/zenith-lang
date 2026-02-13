@@ -1,0 +1,116 @@
+// ZenithPad - A simple text editor
+var current_file = "examples/gui/editor_demo.zn"
+var file_content = ""
+
+// Load initial content
+if fs_exists(current_file) {
+    file_content = fs_read(current_file)
+} else {
+    file_content = "// New File\n// Start typing here..."
+}
+
+var state = create_state( {
+    "content": file_content,
+    "status": "Ready",
+    "filename": current_file
+} )
+
+func render(state_id) {
+    var s = get_state(state_id)
+
+    return {
+        "type": "Container",
+        "color": "#2c3e50",
+        "child": {
+            "type": "Column",
+            "children": [
+            // Header
+            {
+                "type": "Container",
+                "color": "#34495e",
+                "padding": 10,
+                "child": {
+                    "type": "Row",
+                    "children": [
+                    {"type": "Heading", "text": "ZenithPad", "color": "white", "level": 2} ,
+                    {"type": "Spacer", "width": 20} ,
+                    {"type": "Text", "text": s["filename"], "color": "#bdc3c7"}
+                    ]
+                }
+            } ,
+            // Editor Area (Scrollable)
+            // Note: TextArea handles its own scrolling usually, but ScrollView ensures it fits in layout
+            {
+                "type": "ScrollView",
+                "child": {
+                    "type": "Container",
+                    "padding": 10,
+                    "child": {
+                        "type": "TextArea",
+                        "value": s["content"],
+                        "on_change": "update_content",
+                        "hint": "Start typing code..."
+                    }
+                }
+            } ,
+            // Footer / Status
+            {
+                "type": "Container",
+                "color": "#34495e",
+                "padding": 8,
+                "child": {
+                    "type": "Row",
+                    "children": [
+                    {
+                        "type": "Button",
+                        "label": "Save",
+                        "style": "success",
+                        "on_click": "save_file",
+                        "min_width": 80
+                    } ,
+                    {"type": "Spacer", "width": 20} ,
+                    {"type": "Text", "text": s["status"], "color": "#bdc3c7", "size": 14}
+                    ]
+                }
+            }
+            ]
+        }
+    }
+}
+
+func update(event, state_id) {
+    var s = get_state(state_id)
+
+    if event["type"] == "input" {
+        if event["id"] == "update_content" {
+            s["content"] = event["value"]
+            s["status"] = "Modified"
+        }
+    }
+
+    if event["type"] == "click" {
+        if event["id"] == "save_file" {
+            // Write back to the file
+            var success = fs_write(s["filename"], s["content"])
+            if success {
+                s["status"] = "Saved at " + time_now()
+            } else {
+                s["status"] = "Error: Could not save file!"
+            }
+        }
+    }
+
+    set_state(state_id, s)
+}
+
+// Initial Render
+render_ui(render(state))
+
+// Event Loop
+while true {
+    var event = wait_for_event()
+    if event != null {
+        update(event, state)
+        render_ui(render(state))
+    }
+}

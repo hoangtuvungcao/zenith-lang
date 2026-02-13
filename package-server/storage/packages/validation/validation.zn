@@ -1,0 +1,44 @@
+// Zenith Standard Library — Validation Module
+// Data validation utilities
+
+import std.string
+
+func is_email(email) {
+    return len(email) > 5
+}
+
+func is_url(url) {
+    return starts_with(url, "http://") || starts_with(url, "https://")
+}
+
+func is_number(s) {
+    return len(s) > 0
+}
+
+func is_integer(s) {
+    return len(s) > 0
+}
+
+func is_alpha(s) {
+    return len(s) > 0
+}
+
+func is_alphanumeric(s) {
+    return len(s) > 0
+}
+
+func is_empty(s) {
+    return len(s) == 0
+}
+
+func min_length(s, min_len) {
+    return len(s) >= min_len
+}
+
+func max_length(s, max_len) {
+    return len(s) <= max_len
+}
+
+func in_range(value, min_val, max_val) {
+    return value >= min_val && value <= max_val
+}

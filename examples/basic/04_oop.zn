@@ -1,0 +1,67 @@
+// 04_oop.zn - Object-Oriented Style (REWRITTEN - SIMPLIFIED!)
+// Demonstrates: Structs, Factory Functions, Data Encapsulation
+// NOTE: Method syntax (obj.method()) not yet supported, using function calls
+
+println("--- Object-Oriented Programming in Zenith ---")
+
+// Factory function to create user objects
+func create_user(name, email, age) {
+    return {
+        "name": name,
+        "email": email,
+        "age": age,
+        "premium": false
+    }
+}
+
+// "Method" implemented as standalone function
+func user_greet(user) {
+    return "Hello, I'm " + user["name"] + "!"
+}
+
+func user_upgrade(user) {
+    return {
+        "name": user["name"],
+        "email": user["email"],
+        "age": user["age"],
+        "premium": true
+    }
+}
+
+func user_update_email(user, new_email) {
+    return {
+        "name": user["name"],
+        "email": new_email,
+        "age": user["age"],
+        "premium": user["premium"]
+    }
+}
+
+// Usage
+var user = create_user("Alice", "alice@example.com", 25)
+
+println(user_greet(user))
+println("Email: " + user["email"])
+println("Age: " + str(user["age"]))
+println("Premium: " + str(user["premium"]))
+
+println("")
+println("--- Upgrading to Premium ---")
+user = user_upgrade(user)
+println("Premium: " + str(user["premium"]))
+
+println("")
+println("--- Updating Email ---")
+user = user_update_email(user, "alice.new@example.com")
+println("New Email: " + user["email"])
+
+println("")
+println("--- Creating Multiple Users ---")
+var bob = create_user("Bob", "bob@example.com", 30)
+var charlie = create_user("Charlie", "charlie@example.com", 28)
+
+println(user_greet(bob))
+println(user_greet(charlie))
+
+println("")
+println("Success OOP-style programming demonstration complete!")

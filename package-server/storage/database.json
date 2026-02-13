@@ -1,0 +1,668 @@
+{
+  "packages": [
+    {
+      "name": "ai",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: ai",
+      "fileName": "ai.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/ai.zn",
+      "fileSize": 1358,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:32:45.208Z",
+      "updatedAt": "2026-02-12T11:58:14.017Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "ai"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "array",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: array",
+      "fileName": "array.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/array.zn",
+      "fileSize": 1468,
+      "downloads": 0,
+      "createdAt": "2026-02-12T03:54:57.011Z",
+      "updatedAt": "2026-02-12T12:35:56.230Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "array"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "audio",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: audio",
+      "fileName": "audio.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/audio.zn",
+      "fileSize": 1064,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:04:39.226Z",
+      "updatedAt": "2026-02-12T11:58:21.889Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "audio"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "chemistry",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: chemistry",
+      "fileName": "chemistry.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/chemistry.zn",
+      "fileSize": 1081,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:04:55.266Z",
+      "updatedAt": "2026-02-12T11:58:24.107Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "chemistry"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "config",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: config",
+      "fileName": "config.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/config.zn",
+      "fileSize": 2507,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:57:18.220Z",
+      "updatedAt": "2026-02-12T11:58:26.491Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "config"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "crypto",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: crypto",
+      "fileName": "crypto.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/crypto.zn",
+      "fileSize": 615,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:19:48.394Z",
+      "updatedAt": "2026-02-12T11:58:29.703Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "crypto"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "database",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: database",
+      "fileName": "database.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/database.zn",
+      "fileSize": 1761,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:20:29.253Z",
+      "updatedAt": "2026-02-12T11:58:33.721Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "database"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "datetime",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: datetime",
+      "fileName": "datetime.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/datetime.zn",
+      "fileSize": 963,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:19:53.706Z",
+      "updatedAt": "2026-02-12T11:58:38.424Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "datetime"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "encoding",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: encoding",
+      "fileName": "encoding.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/encoding.zn",
+      "fileSize": 1404,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:20:21.159Z",
+      "updatedAt": "2026-02-12T11:58:41.058Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "encoding"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "filesystem",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: filesystem",
+      "fileName": "filesystem.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/filesystem.zn",
+      "fileSize": 1304,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:19:59.240Z",
+      "updatedAt": "2026-02-12T12:55:43.105Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "filesystem"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "finance",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: finance",
+      "fileName": "finance.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/finance.zn",
+      "fileSize": 1524,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:05:15.642Z",
+      "updatedAt": "2026-02-12T11:58:46.315Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "finance"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "game",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: game",
+      "fileName": "game.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/game.zn",
+      "fileSize": 8009,
+      "downloads": 0,
+      "createdAt": "2026-02-12T12:43:14.079Z",
+      "updatedAt": "2026-02-12T13:22:00.300Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "game"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "graphics",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: graphics",
+      "fileName": "graphics.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/graphics.zn",
+      "fileSize": 284,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:33:02.703Z",
+      "updatedAt": "2026-02-12T12:30:21.386Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "graphics"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "http",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: http",
+      "fileName": "http.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/http.zn",
+      "fileSize": 423,
+      "downloads": 0,
+      "createdAt": "2026-02-12T03:55:07.017Z",
+      "updatedAt": "2026-02-12T11:59:54.544Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "http"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "image_processing",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: image_processing",
+      "fileName": "image_processing.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/image_processing.zn",
+      "fileSize": 4795,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:09:43.645Z",
+      "updatedAt": "2026-02-12T11:59:56.537Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "image_processing"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "io",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: io",
+      "fileName": "io.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/io.zn",
+      "fileSize": 993,
+      "downloads": 0,
+      "createdAt": "2026-02-12T15:46:04.513Z",
+      "updatedAt": "2026-02-12T15:46:04.514Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "io"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "json",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: json",
+      "fileName": "json.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/json.zn",
+      "fileSize": 347,
+      "downloads": 0,
+      "createdAt": "2026-02-12T03:55:05.006Z",
+      "updatedAt": "2026-02-12T12:00:00.588Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "json"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "logging",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: logging",
+      "fileName": "logging.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/logging.zn",
+      "fileSize": 2369,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:56:29.817Z",
+      "updatedAt": "2026-02-12T12:00:03.777Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "logging"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "machine_learning",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: machine_learning",
+      "fileName": "machine_learning.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/machine_learning.zn",
+      "fileSize": 5722,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:10:08.659Z",
+      "updatedAt": "2026-02-12T12:00:05.580Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "machine_learning"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "math",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: math",
+      "fileName": "math.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/math.zn",
+      "fileSize": 1287,
+      "downloads": 0,
+      "createdAt": "2026-02-13T02:02:48.665Z",
+      "updatedAt": "2026-02-13T02:02:48.666Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "math"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "net",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: net",
+      "fileName": "net.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/net.zn",
+      "fileSize": 863,
+      "downloads": 0,
+      "createdAt": "2026-02-12T04:59:45.936Z",
+      "updatedAt": "2026-02-12T05:21:01.360Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "net"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "network_advanced",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: network_advanced",
+      "fileName": "network_advanced.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/network_advanced.zn",
+      "fileSize": 12433,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:28:22.101Z",
+      "updatedAt": "2026-02-12T06:28:22.101Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "network_advanced"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "os",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: os",
+      "fileName": "os.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/os.zn",
+      "fileSize": 1219,
+      "downloads": 0,
+      "createdAt": "2026-02-12T03:55:01.006Z",
+      "updatedAt": "2026-02-12T05:25:18.178Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "os"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "physics",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: physics",
+      "fileName": "physics.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/physics.zn",
+      "fileSize": 2273,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:05:06.890Z",
+      "updatedAt": "2026-02-12T06:07:34.022Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "physics"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "process",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: process",
+      "fileName": "process.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/process.zn",
+      "fileSize": 1090,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:20:04.546Z",
+      "updatedAt": "2026-02-12T05:20:04.547Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "process"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "quantum",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: quantum",
+      "fileName": "quantum.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/quantum.zn",
+      "fileSize": 792,
+      "downloads": 0,
+      "createdAt": "2026-02-12T14:37:14.277Z",
+      "updatedAt": "2026-02-12T14:37:31.581Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "quantum"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "security",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: security",
+      "fileName": "security.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/security.zn",
+      "fileSize": 1606,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:05:23.910Z",
+      "updatedAt": "2026-02-12T06:08:49.759Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "security"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "statistics",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: statistics",
+      "fileName": "statistics.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/statistics.zn",
+      "fileSize": 1527,
+      "downloads": 0,
+      "createdAt": "2026-02-12T06:04:47.954Z",
+      "updatedAt": "2026-02-12T06:06:49.299Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "statistics"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "string",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: string",
+      "fileName": "string.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/string.zn",
+      "fileSize": 1487,
+      "downloads": 0,
+      "createdAt": "2026-02-12T03:54:49.602Z",
+      "updatedAt": "2026-02-12T03:54:49.619Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "string"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "test_all_modules",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: test_all_modules",
+      "fileName": "test_all_modules.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/test_all_modules.zn",
+      "fileSize": 2832,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:23:14.015Z",
+      "updatedAt": "2026-02-12T12:00:24.613Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "test_all_modules"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "validation",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: validation",
+      "fileName": "validation.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/validation.zn",
+      "fileSize": 689,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:20:13.762Z",
+      "updatedAt": "2026-02-12T12:00:22.400Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "validation"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "web",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: web",
+      "fileName": "web.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/web.zn",
+      "fileSize": 13772,
+      "downloads": 0,
+      "createdAt": "2026-02-12T15:46:04.516Z",
+      "updatedAt": "2026-02-12T15:46:04.517Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "web"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "web_simple",
+      "version": "1.0.0",
+      "description": "Zenith standard library module: web_simple",
+      "fileName": "web_simple.zn",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/lib/std/web_simple.zn",
+      "fileSize": 1742,
+      "downloads": 0,
+      "createdAt": "2026-02-12T05:53:53.389Z",
+      "updatedAt": "2026-02-12T12:00:20.444Z",
+      "author": "Zenith Team",
+      "dependencies": [],
+      "keywords": [
+        "zenith",
+        "standard-library",
+        "web_simple"
+      ],
+      "isStandardLibrary": true
+    },
+    {
+      "name": "c_module",
+      "version": "1.0.0",
+      "description": "A C module test",
+      "fileName": "c_module.zip",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/package-server/storage/packages/c_module/c_module.zip",
+      "fileSize": 439,
+      "checksum": "c_module.zip-1770910883971",
+      "downloads": 1,
+      "createdAt": "2026-02-12T15:41:23.971Z",
+      "updatedAt": "2026-02-12T15:41:23.971Z",
+      "author": "Anonymous",
+      "dependencies": []
+    },
+    {
+      "name": "awesome-utils",
+      "version": "1.0.0",
+      "description": "A collective of awesome utilities for Zenith",
+      "keywords": [
+        "utils",
+        "math"
+      ],
+      "fileName": "awesome-utils.zip",
+      "filePath": "/home/vantrong/Downloads/ngon_ngu_lap_trinh_moi/zenith/package-server/storage/packages/awesome-utils/awesome-utils.zip",
+      "fileSize": 202,
+      "checksum": "awesome-utils.zip-1770948319831",
+      "downloads": 1,
+      "createdAt": "2026-02-13T02:05:19.831Z",
+      "updatedAt": "2026-02-13T02:05:19.831Z",
+      "author": "Antigravity",
+      "dependencies": []
+    }
+  ],
+  "stats": {
+    "totalPackages": 35,
+    "totalDownloads": 4,
+    "lastUpdated": "2026-02-13T02:05:23.727Z"
+  }
+}

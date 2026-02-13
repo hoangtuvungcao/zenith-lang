@@ -1,0 +1,158 @@
+// 13_game_tictactoe.zn - Tic-Tac-Toe Game (COMPLETELY REWRITTEN!)
+// Simple 3x3 game with win detection
+
+func is_winner(b, player) {
+    // Rows
+    if (b[0] == player && b[1] == player && b[2] == player) { return true }
+    if (b[3] == player && b[4] == player && b[5] == player) { return true }
+    if (b[6] == player && b[7] == player && b[8] == player) { return true }
+    
+    // Columns
+    if (b[0] == player && b[3] == player && b[6] == player) { return true }
+    if (b[1] == player && b[4] == player && b[7] == player) { return true }
+    if (b[2] == player && b[5] == player && b[8] == player) { return true }
+    
+    // Diagonals
+    if (b[0] == player && b[4] == player && b[8] == player) { return true }
+    if (b[2] == player && b[4] == player && b[6] == player) { return true }
+    
+    return false
+}
+
+func check_winner(board) {
+    if (is_winner(board, "X")) { return "X" }
+    if (is_winner(board, "O")) { return "O" }
+    return ""
+}
+
+func build_cell(index, value) {
+    var label = " "
+    if (value != "") {
+        label = value
+    }
+    
+    return {
+        "type": "Button",
+        "label": label,
+        "min_width": 60,
+        "on_click": "cell_" + str(index)
+    }
+}
+
+func build_ui(board, player, winner) {
+    var title_text = "🎮 Tic-Tac-Toe - Player: " + player
+    if (winner != "") {
+        title_text = "🏆 Winner: " + winner + "!"
+    }
+    
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Card",
+            "child": {
+                "type": "Column",
+                "spacing": 10,
+                "children": [
+                    { "type": "Heading", "text": title_text, "level": 2 },
+                    
+                    { "type": "Spacer", "height": 10 },
+                    
+                    // Row 1
+                    {
+                        "type": "Row",
+                        "spacing": 5,
+                        "children": [
+                            build_cell(0, board[0]),
+                            build_cell(1, board[1]),
+                            build_cell(2, board[2])
+                        ]
+                    },
+                    
+                    // Row 2
+                    {
+                        "type": "Row",
+                        "spacing": 5,
+                        "children": [
+                            build_cell(3, board[3]),
+                            build_cell(4, board[4]),
+                            build_cell(5, board[5])
+                        ]
+                    },
+                    
+                    // Row 3
+                    {
+                        "type": "Row",
+                        "spacing": 5,
+                        "children": [
+                            build_cell(6, board[6]),
+                            build_cell(7, board[7]),
+                            build_cell(8, board[8])
+                        ]
+                    },
+                    
+                    { "type": "Spacer", "height": 10 },
+                    
+                    {
+                        "type": "Button",
+                        "label": "New Game",
+                        "style": "success",
+                        "on_click": "reset"
+                    }
+                ]
+            }
+        }
+    }
+}
+
+func main() {
+    println("Starting Tic-Tac-Toe...")
+    
+    var game_board = ["", "", "", "", "", "", "", "", ""]
+    var current_player = "X"
+    var game_winner = ""
+    
+    while (true) {
+        render_ui(build_ui(game_board, current_player, game_winner))
+        
+        var event = wait_for_event()
+        
+        if (event["type"] == "click") {
+            if (event["id"] == "reset") {
+                game_board = ["", "", "", "", "", "", "", "", ""]
+                current_player = "X"
+                game_winner = ""
+            }
+            else if (str_contains(event["id"], "cell_") && game_winner == "") {
+                var parts = str_split(event["id"], "_")
+                var cell_index = parse_int(parts[1])
+                
+                if (game_board[cell_index] == "") {
+                    // Make move - create new board
+                    var new_board = []
+                    for i in 0..9 {
+                        if (i == cell_index) {
+                            new_board = push(new_board, current_player)
+                        } else {
+                            new_board = push(new_board, game_board[i])
+                        }
+                    }
+                    game_board = new_board
+                    
+                    // Check winner
+                    game_winner = check_winner(game_board)
+                    
+                    // Switch player
+                    if (game_winner == "") {
+                        if (current_player == "X") {
+                            current_player = "O"
+                        } else {
+                            current_player = "X"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+main()

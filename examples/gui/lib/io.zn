@@ -1,0 +1,49 @@
+// Zenith Standard Library — IO Module
+// Usage: import std.io
+// Wraps native `print`, `println`, `read_file`, `write_file`, `fs_read`, `fs_write`,
+// `fs_exists`, `sys_exec` with convenience helpers.
+
+func read_text(path) {
+    return fs_read(path)
+}
+
+func write_text(path, content) {
+    return fs_write(path, content)
+}
+
+func file_exists(path) {
+    return fs_exists(path)
+}
+
+func read_lines(path) {
+    var content = fs_read(path)
+    if content == null {
+        return []
+    }
+    return str_split(content, "\n")
+}
+
+func write_lines(path, lines) {
+    var content = ""
+    var i = 0
+    for line in lines {
+        if i > 0 {
+            content = content + "\n"
+        }
+        content = content + line
+        i = i + 1
+    }
+    return fs_write(path, content)
+}
+
+func append_text(path, text) {
+    var existing = fs_read(path)
+    if existing == null {
+        existing = ""
+    }
+    return fs_write(path, existing + text)
+}
+
+func run_command(cmd) {
+    return sys_exec(cmd)
+}

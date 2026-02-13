@@ -1,0 +1,45 @@
+// 04_data.zn - Data Structures (REWRITTEN - FIXED!)
+// Demonstrates: Arrays, Objects, Iteration
+
+println("--- Arrays ---")
+var fruits = ["Apple", "Banana", "Cherry"]
+println("Fruits: " + str(len(fruits)))
+println("Index 1: " + fruits[1])
+
+// Array operations
+fruits = push(fruits, "Date")
+println("After push: " + str(len(fruits)))
+
+// Iterate array
+for i in 0..len(fruits) {
+    println("  " + str(i) + ": " + fruits[i])
+}
+
+println("")
+println("--- Objects ---")
+var hero = {
+    "name": "ZenithMan",
+    "power": 100,
+    "level": 5
+}
+
+println("Hero: " + hero["name"])
+println("Power: " + str(hero["power"]))
+println("Level: " + str(hero["level"]))
+
+// NOTE: Direct object["key"] = value assignment not yet supported by parser
+// Workaround: Create new object with updated values
+var updated_hero = {
+    "name": hero["name"],
+    "power": 150, // Updated!
+    "level": hero["level"] + 1 // Level up!
+}
+
+println("")
+println("--- After Power-Up ---")
+println("Hero: " + updated_hero["name"])
+println("New Power: " + str(updated_hero["power"]))
+println("New Level: " + str(updated_hero["level"]))
+
+println("")
+println("Success Data structures demonstration complete!")

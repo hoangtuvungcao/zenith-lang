@@ -1,0 +1,68 @@
+// 10_simple_counter.zn - Minimal Counter Example
+// Simple counter demonstrating UI state updates
+
+func build_ui(count_value) {
+    var count_str = str(count_value)
+
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Column",
+            "children": [
+            { "type": "Text", "text": "Simple Counter" } ,
+            { "type": "Text", "text": "Count: " + count_str } ,
+            {
+                "type": "Row",
+                "children": [
+                {
+                    "type": "Button",
+                    "label": "-",
+                    "on_click": "decrement"
+                } ,
+                {
+                    "type": "Button",
+                    "label": "+",
+                    "on_click": "increment"
+                } ,
+                {
+                    "type": "Button",
+                    "label": "Reset",
+                    "on_click": "reset"
+                }
+                ]
+            }
+            ]
+        }
+    }
+}
+
+func main() {
+    println("Starting Counter...")
+
+    var state = create_state( {"count": 0} )
+
+    while (true) {
+        var current = get_state(state)
+        var count_num = current["count"]
+        render_ui(build_ui(count_num))
+
+        var event = wait_for_event()
+
+        if (event["type"] == "click") {
+            if (event["id"] == "increment") {
+                current["count"] = current["count"] + 1
+                set_state(state, current)
+            }
+            else if (event["id"] == "decrement") {
+                current["count"] = current["count"] - 1
+                set_state(state, current)
+            }
+            else if (event["id"] == "reset") {
+                current["count"] = 0
+                set_state(state, current)
+            }
+        }
+    }
+}
+
+main()

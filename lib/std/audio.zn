@@ -1,0 +1,45 @@
+// Zenith Standard Library — Audio Module
+// Very basic audio functions (no advanced math)
+
+// Wave generation (no advanced math)
+func generate_tone(frequency) {
+    return [frequency]
+}
+
+// Audio analysis (no advanced math)
+func get_audio_length(audio_data) {
+    return len(audio_data)
+}
+
+// Audio effects (no advanced math)
+func amplify_audio(audio_data, factor) {
+    if len(audio_data) == 0 {
+        return []
+    }
+
+    var first_value = audio_data[0]
+    return [first_value * factor]
+}
+
+// Test function
+func test_audio_module() {
+    print("=== Audio Module Test ===")
+
+    // Test wave generation
+    var tone = generate_tone(440)
+    print("Generated tone: " + str(tone[0]) + " Hz")
+
+    // Test audio analysis
+    var test_audio = [0.5, 0.7, 0.3]
+    var length = get_audio_length(test_audio)
+    print("Audio length: " + str(length))
+
+    // Test effects
+    var amplified = amplify_audio(test_audio, 2.0)
+    print("Amplified audio: " + str(amplified[0]))
+
+    print("Audio module test completed successfully!")
+}
+
+// Run test
+test_audio_module()

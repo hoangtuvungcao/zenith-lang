@@ -1,0 +1,6 @@
+// Zenith Package: math-pro
+// Version: 1.0.5
+
+func info() {
+    print("Loaded math-pro v1.0.5");
+}

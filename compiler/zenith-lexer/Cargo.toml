@@ -1,0 +1,14 @@
+[package]
+name = "zenith-lexer"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language lexer"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+regex = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+colored = "2.0"
+

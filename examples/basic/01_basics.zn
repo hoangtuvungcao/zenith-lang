@@ -1,0 +1,42 @@
+// 01_basics.zn - Variables, Types, and IO
+// Run with: cargo run -p zenith -- run examples/01_basics.zn
+
+func main() {
+    // 1. Printing to Console
+    println("Hello from Zenith!")
+
+    // 2. Variables (Dynamic Typing)
+    var name = "Zenith Developer"
+    var age = 1
+    var is_awesome = true
+    var rating = 9.5
+
+    println("Name: " + name)
+    println("Age: " + age)
+    println("Awesome? " + is_awesome)
+
+    // 3. String Interpolation (via Concatenation for now)
+    println("User " + name + " gives a rating of " + rating + "/10")
+
+    // 4. Basic Math
+    var a = 10
+    var b = 5
+    println("10 + 5 = " + (a + b))
+    println("10 - 5 = " + (a - b))
+    println("10 * 5 = " + (a * b))
+    println("10 / 5 = " + (a / b))
+
+    // 5. Arrays
+    var items = ["Apple", "Banana", "Cherry"]
+    println("First item: " + items[0])
+    println("Array Length: " + len(items))
+
+    // 6. Objects (Dictionaries)
+    var user = {
+        "id": 101,
+        "role": "Admin"
+    }
+    println("User Role: " + user["role"])
+}
+
+

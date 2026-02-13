@@ -1,0 +1,23 @@
+[package]
+name = "zenith-desktop"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language desktop UI framework"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+zenith-runtime = { path = "../../runtime" }
+zenith-lexer = { path = "../../compiler/zenith-lexer" }
+zenith-parser = { path = "../../compiler/zenith-parser" }
+zenith-sema = { path = "../../compiler/zenith-sema" }
+winit = "0.28"
+egui = "0.23"
+eframe = "0.23"
+serde_json = "1.0"
+anyhow = "1.0"
+clap = { version = "4.0", features = ["derive"] }
+
+[[bin]]
+name = "zenith-view"
+path = "src/main.rs"

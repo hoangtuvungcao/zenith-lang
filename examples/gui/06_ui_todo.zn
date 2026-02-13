@@ -1,0 +1,114 @@
+
+func build_todo_item(text, index) {
+    return {
+        "type": "Row",
+        "spacing": 10,
+        "children": [
+        {
+            "type": "Text",
+            "text": "Task: " + text,
+            "size": 14
+        } ,
+        {
+            "type": "Button",
+            "label": "X",
+            "style": "danger",
+            "on_click": "delete_" + str(index)
+        }
+        ]
+    }
+}
+
+func build_ui(todos, input_value) {
+    var items = []
+
+    items = push(items, {
+        "type": "Heading",
+        "text": "Todo List",
+        "level": 1
+    } )
+
+    items = push(items, {
+        "type": "Text",
+        "text": str(len(todos)) + " tasks",
+        "color": "dark"
+    } )
+
+    items = push(items, { "type": "Spacer", "height": 10 } )
+
+    items = push(items, {
+        "type": "Card",
+        "child": {
+            "type": "Row",
+            "spacing": 10,
+            "children": [
+            {
+                "type": "TextField",
+                "value": input_value,
+                "hint": "Add new task...",
+                "on_change": "input"
+            } ,
+            {
+                "type": "Button",
+                "label": "Add",
+                "style": "success",
+                "on_click": "add"
+            }
+            ]
+        }
+    } )
+
+    items = push(items, { "type": "Spacer", "height": 15 } )
+
+    for i in 0..len(todos) {
+        items = push(items, build_todo_item(todos[i], i))
+    }
+
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Container",
+            "padding": 20,
+            "child": {
+                "type": "Column",
+                "spacing": 8,
+                "children": items
+            }
+        }
+    }
+}
+
+func main() {
+    println("Starting Todo App...")
+
+    var todos = ["Learn Zenith", "Build cool app", "Ship it!"]
+    var input_text = ""
+
+    while (true) {
+        render_ui(build_ui(todos, input_text))
+
+        var event = wait_for_event()
+
+        if (is_null(event) == false) {
+            if (event["type"] == "input" && event["id"] == "input") {
+                input_text = event["value"]
+            }
+            else if (event["type"] == "click" && event["id"] == "add") {
+                if (len(input_text) > 0) {
+                    todos = push(todos, input_text)
+                    input_text = ""
+                }
+            }
+            else if (event["type"] == "click") {
+                var id = event["id"]
+                if (str_contains(id, "delete_")) {
+                    var parts = str_split(id, "_")
+                    var index = parse_int(parts[1])
+                    todos = remove(todos, index)
+                }
+            }
+        }
+    }
+}
+
+main()

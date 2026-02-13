@@ -1,0 +1,124 @@
+{
+  "Zenith Function": {
+    "prefix": "func",
+    "body": [
+      "func ${1:function_name}(${2:parameters}) {",
+      "  $0",
+      "}"
+    ],
+    "description": "Create a Zenith function"
+  },
+  "Zenith Main Function": {
+    "prefix": "main",
+    "body": [
+      "func main() {",
+      "  $0",
+      "}",
+      "",
+      "main();"
+    ],
+    "description": "Create a main function"
+  },
+  "Zenith Variable": {
+    "prefix": "var",
+    "body": [
+      "var ${1:name} = ${2:value};"
+    ],
+    "description": "Create a variable"
+  },
+  "Zenith If Statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "  $0",
+      "}"
+    ],
+    "description": "Create an if statement"
+  },
+  "Zenith For Loop": {
+    "prefix": "for",
+    "body": [
+      "for ${1:item} in ${2:iterable} {",
+      "  $0",
+      "}"
+    ],
+    "description": "Create a for loop"
+  },
+  "Zenith Import": {
+    "prefix": "import",
+    "body": [
+      "import ${1:module};"
+    ],
+    "description": "Import a module"
+  },
+  "Zenith Print": {
+    "prefix": "print",
+    "body": [
+      "print(${1:message});"
+    ],
+    "description": "Print a message"
+  },
+  "Zenith Return": {
+    "prefix": "return",
+    "body": [
+      "return ${1:value};"
+    ],
+    "description": "Return a value"
+  },
+  "Zenith Array": {
+    "prefix": "array",
+    "body": [
+      "var ${1:name} = [${2:elements}];"
+    ],
+    "description": "Create an array"
+  },
+  "Zenith Range": {
+    "prefix": "range",
+    "body": [
+      "range(${1:start}, ${2:end})"
+    ],
+    "description": "Create a range of numbers"
+  },
+  "Zenith Length": {
+    "prefix": "len",
+    "body": [
+      "len(${1:array_or_string})"
+    ],
+    "description": "Get length of array or string"
+  },
+  "Zenith String": {
+    "prefix": "str",
+    "body": [
+      "str(${1:value})"
+    ],
+    "description": "Convert to string"
+  },
+  "Zenith Sum": {
+    "prefix": "sum",
+    "body": [
+      "sum(${1:array})"
+    ],
+    "description": "Calculate sum of array"
+  },
+  "Zenith Min": {
+    "prefix": "min",
+    "body": [
+      "min(${1:array})"
+    ],
+    "description": "Find minimum value"
+  },
+  "Zenith Max": {
+    "prefix": "max",
+    "body": [
+      "max(${1:array})"
+    ],
+    "description": "Find maximum value"
+  },
+  "Zenith Comment": {
+    "prefix": "//",
+    "body": [
+      "// ${1:comment}"
+    ],
+    "description": "Create a comment"
+  }
+}

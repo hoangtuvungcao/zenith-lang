@@ -1,0 +1,42 @@
+// Zenith Standard Library — Network Module
+// Basic abstraction for network operations
+
+import std.http
+import std.json
+import std.string
+
+func fetch(url) {
+    // High-level wrapper for http.get
+    return get(url)
+}
+
+func post_json(url, data) {
+    var data_str = stringify(data)
+    return post(url, data_str)
+}
+
+func check_connection() {
+    var resp = head("https://google.com")
+    return len(resp) > 0
+}
+
+func download_file(url, path) {
+    return download(url, path)
+}
+
+func get_status(url) {
+    var resp = head(url)
+    if len(resp) == 0 {
+        return 0
+    }
+    // Extract status code from curl response
+    var lines = str_split(resp, "\n")
+    if len(lines) > 0 {
+        var status_line = lines[0]
+        var parts = str_split(status_line, " ")
+        if len(parts) >= 2 {
+            return to_int(parts[1])
+        }
+    }
+    return 0
+}

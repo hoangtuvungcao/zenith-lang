@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith - Simple, Powerful, Professional Programming</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-rocket"></i>
+                <span>Zenith</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#modules" class="nav-link">Modules</a>
+                <a href="#examples" class="nav-link">Examples</a>
+                <a href="#docs" class="nav-link">Documentation</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-rocket"></i>
+                    Zenith Programming Language
+                </h1>
+                <p class="hero-subtitle">
+                    A modern, simple, and powerful programming language with a comprehensive standard library
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">32</span>
+                        <span class="stat-label">Modules</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Cross</span>
+                        <span class="stat-label">Platform</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">MIT</span>
+                        <span class="stat-label">License</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('download')">
+                        <i class="fas fa-download"></i> Download Now
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('modules')">
+                        <i class="fas fa-cube"></i> Explore Modules
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-preview">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-title">hello.zn</span>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>// Your first Zenith program
+print("Hello, Zenith!")
+
+// Variables and types
+var name = "Zenith"
+var version = 1.0
+var is_awesome = true
+
+// Arrays
+var numbers = [1, 2, 3, 4, 5]
+print("Sum: " + str(sum(numbers)))
+
+// Functions
+func greet(name) {
+    return "Hello, " + name + "!"
+}
+
+print(greet("World"))</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Zenith?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Simple</h3>
+                    <p>Easy to learn and use with clean, readable syntax</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Powerful</h3>
+                    <p>Comprehensive standard library with 32 production-ready modules</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Modern</h3>
+                    <p>Built for today's development needs with modern features</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Professional</h3>
+                    <p>Enterprise-ready quality and production stability</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="modules">
+        <div class="container">
+            <h2 class="section-title">32 Production-Ready Modules</h2>
+            <p class="section-subtitle">Everything you need for modern development</p>
+            
+            <!-- Module Categories -->
+            <div class="module-categories">
+                <button class="category-btn active" data-category="all">All Modules</button>
+                <button class="category-btn" data-category="core">Core</button>
+                <button class="category-btn" data-category="system">System</button>
+                <button class="category-btn" data-category="network">Network</button>
+                <button class="category-btn" data-category="utilities">Utilities</button>
+                <button class="category-btn" data-category="advanced">Advanced</button>
+                <button class="category-btn" data-category="science">Science</button>
+            </div>
+
+            <!-- Modules Grid -->
+            <div class="modules-grid" id="modulesGrid">
+                <!-- Modules will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="examples">
+        <div class="container">
+            <h2 class="section-title">Real-World Examples</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-header">
+                        <i class="fas fa-globe"></i>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>import std.web
+import std.http
+
+// Create web server
+var server = create_server(3000)
+add_route(server, "GET", "/", home_handler)
+start_server(server)</code></pre>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Machine Learning</h3>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>import std.machine_learning
+import std.statistics
+
+// Machine learning
+var model = linear_regression(x_data, y_data)
+var prediction = predict(model, new_data)</code></pre>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">
+                        <i class="fas fa-image"></i>
+                        <h3>Image Processing</h3>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>import std.image_processing
+
+// Process images
+var image = load_image("photo.jpg")
+var filtered = apply_blur(image)
+save_image(filtered, "blurred.jpg")</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Get Started Today</h2>
+            <div class="download-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Clone Repository</h3>
+                        <code>git clone https://github.com/zenith-lang/zenith.git</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Build Compiler</h3>
+                        <code>cargo build --release</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Add to PATH</h3>
+                        <code>export PATH=$PATH:$(pwd)/target/release</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Run Your First Program</h3>
+                        <code>zenith run hello.zn</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-rocket"></i>
+                        <span>Zenith</span>
+                    </div>
+                    <p>Simple, Powerful, Professional Programming</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Examples</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Standard Library</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Contributing</a></li>
+                        <li><a href="#">Issues</a></li>
+                        <li><a href="#">Forums</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zenith Programming Language. Licensed under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

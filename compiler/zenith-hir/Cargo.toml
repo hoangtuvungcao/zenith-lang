@@ -1,0 +1,12 @@
+[package]
+name = "zenith-hir"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language high-level intermediate representation"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+zenith-lexer = { path = "../zenith-lexer" }
+zenith-parser = { path = "../zenith-parser" }
+serde = { version = "1.0", features = ["derive"] }

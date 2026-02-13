@@ -1,0 +1,119 @@
+// 09_chat_ui.zn - Chat Interface (COMPLETELY REWRITTEN!)
+// Simple chat with message list
+
+func build_message(sender, text) {
+    return {
+        "type": "Card",
+        "child": {
+            "type": "Column",
+            "spacing": 5,
+            "children": [
+            {
+                "type": "Text",
+                "text": "👤 " + sender,
+                "bold": true,
+                "size": 12,
+                "color": "blue"
+            } ,
+            {
+                "type": "Text",
+                "text": text,
+                "size": 14
+            }
+            ]
+        }
+    }
+}
+
+func build_ui(messages, input_value) {
+    var items = []
+
+    // Title
+    items = push(items, {
+        "type": "Heading",
+        "text": "💬 Zenith Chat",
+        "level": 1
+    } )
+
+    items = push(items, { "type": "Spacer", "height": 10 } )
+
+    // Messages
+    for i in 0..len(messages) {
+        var msg_data = messages[i]
+        var sender_name = msg_data["sender"]
+        var message_text = msg_data["text"]
+        items = push(items, build_message(sender_name, message_text))
+    }
+
+    items = push(items, { "type": "Spacer", "height": 15 } )
+
+    // Input area
+    items = push(items, {
+        "type": "Card",
+        "child": {
+            "type": "Row",
+            "spacing": 10,
+            "children": [
+            {
+                "type": "TextField",
+                "value": input_value,
+                "hint": "Type a message...",
+                "on_change": "msg_input"
+            } ,
+            {
+                "type": "Button",
+                "label": "Send",
+                "style": "primary",
+                "on_click": "send"
+            }
+            ]
+        }
+    } )
+
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Container",
+            "padding": 20,
+            "child": {
+                "type": "Column",
+                "spacing": 8,
+                "children": items
+            }
+        }
+    }
+}
+
+func main() {
+    println("Starting Chat UI...")
+
+    // Initial messages
+    var chat_messages = [
+    { "sender": "Alice", "text": "Hey! How's Zenith coming along?" } ,
+    { "sender": "Bob", "text": "Great! The UI system is awesome!" } ,
+    { "sender": "Alice", "text": "I know right? So easy to use!" }
+    ]
+    var input_text = ""
+
+    while (true) {
+        render_ui(build_ui(chat_messages, input_text))
+
+        var event = wait_for_event()
+
+        if (event["type"] == "input" && event["id"] == "msg_input") {
+            input_text = event["value"]
+        }
+        else if (event["type"] == "click" && event["id"] == "send") {
+            if (len(input_text) > 0) {
+                var new_message = {
+                    "sender": "You",
+                    "text": input_text
+                }
+                chat_messages = push(chat_messages, new_message)
+                input_text = ""
+            }
+        }
+    }
+}
+
+main()

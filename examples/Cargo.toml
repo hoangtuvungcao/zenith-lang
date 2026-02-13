@@ -1,0 +1,10 @@
+[package]
+name = "zenith-examples"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language examples"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+zenith-runtime = { path = "../runtime" }

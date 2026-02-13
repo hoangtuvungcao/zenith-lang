@@ -1,0 +1,16 @@
+// 05_file_io.zn - File Input/Output
+
+func main() {
+    var filename = "test_output.txt"
+    var content = "This is a test file created by Zenith."
+
+    println("Writing to " + filename + "...")
+    // Note: write_file/read_file are part of stdlib
+    // write_file(filename, content)
+
+    println("Reading from " + filename + "...")
+    // var read_content = read_file(filename)
+    // println("Content: " + read_content)
+
+    println("(Note: File IO implementation depends on StdLib availability)")
+}

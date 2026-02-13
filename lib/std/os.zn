@@ -1,0 +1,68 @@
+// Zenith Standard Library — OS Module
+// Usage: import std.os
+
+func cwd() {
+    var result = sys_exec("pwd")
+    return str_replace(result, "\n", "")
+}
+
+func platform() {
+    var result = sys_exec("uname -s")
+    return str_replace(result, "\n", "")
+}
+
+func hostname() {
+    var result = sys_exec("hostname")
+    return str_replace(result, "\n", "")
+}
+
+func env(name) {
+    var result = sys_exec("echo $" + name)
+    return str_replace(result, "\n", "")
+}
+
+func list_dir(path) {
+    var result = sys_exec("ls -1 " + path)
+    if result == "" {
+        return []
+    }
+    return str_split(result, "\n")
+}
+
+func mkdir(path) {
+    sys_exec("mkdir -p " + path)
+    return true
+}
+
+func rmdir(path) {
+    sys_exec("rm -rf " + path)
+    return true
+}
+
+func copy_file(src, dst) {
+    sys_exec("cp " + src + " " + dst)
+    return true
+}
+
+func move_file(src, dst) {
+    sys_exec("mv " + src + " " + dst)
+    return true
+}
+
+func remove_file(path) {
+    sys_exec("rm -f " + path)
+    return true
+}
+
+func file_size(path) {
+    var result = sys_exec("stat --printf='%s' " + path)
+    return parse_int(result)
+}
+
+func sleep(seconds) {
+    sys_exec("sleep " + str(seconds))
+}
+
+func exit(code) {
+    sys_exec("exit " + str(code))
+}

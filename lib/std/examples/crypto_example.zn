@@ -1,0 +1,70 @@
+// Crypto Module Example
+// Hướng dẫn sử dụng Module Crypto từng bước
+
+import std.crypto
+
+print("=== Crypto Module Examples ===")
+print("")
+
+// 1. hash_string() - MD5 hash
+print("1. Tạo MD5 hash")
+var text = "Hello Zenith"
+var md5_hash = hash_string(text)
+print("MD5('" + text + "') = " + md5_hash)
+print("")
+
+// 2. sha256() - SHA256 hash
+print("2. Tạo SHA256 hash")
+var sha256_hash = sha256(text)
+print("SHA256('" + text + "') = " + sha256_hash)
+print("")
+
+// 3. base64_encode() - Mã hóa Base64
+print("3. Mã hóa Base64")
+var base64_encoded = base64_encode(text)
+print("Base64 encode('" + text + "') = " + base64_encoded)
+print("")
+
+// 4. base64_decode() - Giải mã Base64
+print("4. Giải mã Base64")
+var base64_decoded = base64_decode(base64_encoded)
+print("Base64 decode(...) = " + base64_decoded)
+print("")
+
+// 5. generate_uuid() - Tạo UUID
+print("5. Tạo UUID")
+var uuid = generate_uuid()
+print("Generated UUID: " + uuid)
+print("")
+
+// 6. hmac_sha256() - HMAC-SHA256
+print("6. Tạo HMAC-SHA256")
+var key = "secret_key"
+var message = "important_message"
+var hmac = hmac_sha256(key, message)
+print("HMAC-SHA256('" + message + "', '" + key + "') = " + hmac)
+print("")
+
+// 7. Ví dụ thực tế: Password hashing
+print("7. Ví dụ: Password hashing")
+var password = "user_password_123"
+var password_hash = sha256(password + "salt_value")
+print("Password hash: " + password_hash)
+print("")
+
+// 8. Ví dụ thực tế: Data integrity
+print("8. Ví dụ: Kiểm tra tính toàn vẹn dữ liệu")
+var original_data = "Important document content"
+var data_hash = sha256(original_data)
+print("Original data hash: " + data_hash)
+
+// Giả sử data được truyền đi và nhận lại
+var received_data = "Important document content"
+var received_hash = sha256(received_data)
+print("Received data hash: " + received_hash)
+print("Data integrity check: " + str(data_hash == received_hash))
+print("")
+
+print("=== Crypto Module Test Completed ===")
+print("Lưu ý: Các hàm crypto sử dụng hệ thống Linux bên dưới")
+print("Trong production, nên sử dụng salt cho password hashing")

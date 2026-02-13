@@ -1,0 +1,107 @@
+
+// 07_calculator.zn - A simple GUI Calculator
+
+func main() {
+    var state = {
+        "display": "0",
+        "accumulator": 0,
+        "operator": "",
+        "waiting_for_operand": false
+    }
+
+    render_ui(build_ui(state))
+
+    while (true) {
+        var event = wait_for_event()
+
+        if (is_null(event) == false) {
+            if (event["type"] == "click") {
+                handle_click(state, event["id"])
+                render_ui(build_ui(state))
+            }
+        }
+    }
+}
+
+func handle_click(state, id) {
+    if (id == "clear") {
+        state["display"] = "0"
+        state["accumulator"] = 0
+        state["operator"] = ""
+        state["waiting_for_operand"] = false
+    } else if (id == "=") {
+        if (state["operator"] != "") {
+            var current = parse_int(state["display"])
+            var result = 0
+            if (state["operator"] == "+") {
+                result = state["accumulator"] + current
+            } else if (state["operator"] == "-") {
+                result = state["accumulator"] - current
+            } else if (state["operator"] == "*") {
+                result = state["accumulator"] * current
+            } else if (state["operator"] == "/") {
+                result = state["accumulator"] / current
+            }
+            state["display"] = str(result)
+            state["operator"] = ""
+            state["waiting_for_operand"] = true
+        }
+    } else if (id == "+" || id == "-" || id == "*" || id == "/") {
+        state["operator"] = id
+        state["accumulator"] = parse_int(state["display"])
+        state["waiting_for_operand"] = true
+    } else {
+        // Digit
+        if (state["display"] == "0" || state["waiting_for_operand"]) {
+            state["display"] = id
+            state["waiting_for_operand"] = false
+        } else {
+            state["display"] = state["display"] + id
+        }
+    }
+}
+
+func build_ui(state) {
+    var rows = []
+
+    // Display
+    push(rows, {
+        "type": "Container",
+        "child": {
+            "type": "Text",
+            "text": state["display"]
+        }
+    } )
+
+    // Rows
+    push(rows, build_row(["7", "8", "9", "/"]))
+    push(rows, build_row(["4", "5", "6", "*"]))
+    push(rows, build_row(["1", "2", "3", "-"]))
+    push(rows, build_row(["0", "clear", "=", "+"]))
+
+    return {
+        "type": "Container",
+        "child": {
+            "type": "Column",
+            "children": rows
+        }
+    }
+}
+
+func build_row(buttons) {
+    var children = []
+    for i in 0..len(buttons) {
+        var label = buttons[i]
+        push(children, {
+            "type": "Button",
+            "label": label,
+            "on_click": label
+        } )
+    }
+    return {
+        "type": "Row",
+        "children": children
+    }
+}
+
+main()

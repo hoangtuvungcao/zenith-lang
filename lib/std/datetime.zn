@@ -1,0 +1,43 @@
+// Zenith Standard Library — DateTime Module
+// Date and time operations
+
+func now() {
+    return sys_exec("date +%s")
+}
+
+func format_timestamp(timestamp) {
+    return sys_exec("date -d @" + timestamp + " '+%Y-%m-%d %H:%M:%S'")
+}
+
+func parse_date(date_string) {
+    return sys_exec("date -d '" + date_string + "' +%s")
+}
+
+func add_days(timestamp, days) {
+    return sys_exec("date -d '" + timestamp + " days " + days + " days' +%s")
+}
+
+func add_hours(timestamp, hours) {
+    return sys_exec("date -d '" + timestamp + " hours " + hours + " hours' +%s")
+}
+
+func add_minutes(timestamp, minutes) {
+    return sys_exec("date -d '" + timestamp + " minutes " + minutes + " minutes' +%s")
+}
+
+func format_date() {
+    return sys_exec("date '+%Y-%m-%d'")
+}
+
+func format_time() {
+    return sys_exec("date '+%H:%M:%S'")
+}
+
+func day_of_week() {
+    return sys_exec("date +%A")
+}
+
+func is_weekend() {
+    var day = sys_exec("date +%u")
+    return day == "6" || day == "7"
+}

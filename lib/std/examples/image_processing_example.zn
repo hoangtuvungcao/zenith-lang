@@ -1,0 +1,87 @@
+// Image Processing Module Example
+// Hướng dẫn sử dụng Module Image Processing
+
+import std.image_processing
+
+print("=== Image Processing Module Examples ===")
+print("")
+
+// Tạo ảnh cơ bản
+var image = create_image(100, 100)
+print("Tạo ảnh 100x100: " + str(image["width"]) + "x" + str(image["height"]))
+
+// Lấy thông tin ảnh
+var info = get_image_info(image)
+print("Thông tin ảnh: " + str(info["width"]) + "x" + str(info["height"]) + " size: " + str(info["size"]))
+
+// Áp dụng filter grayscale
+var grayscale = apply_grayscale(image)
+print("Áp dụng filter grayscale: thành công")
+
+// Áp dụng filter blur
+var blurred = apply_blur(image)
+print("Áp dụng filter blur: thành công")
+
+// Áp dụng filter sharpen
+var sharpened = apply_sharpen(image)
+print("Áp dụng filter sharpen: thành công")
+
+// Thay đổi kích thước ảnh
+var resized = resize_image(image, 200, 200)
+print("Thay đổi kích thước: " + str(resized["width"]) + "x" + str(resized["height"]))
+
+// Cắt ảnh
+var cropped = crop_image(image, 10, 10, 50, 50)
+print("Cắt ảnh: " + str(cropped["width"]) + "x" + str(cropped["height"]))
+
+// Xoay ảnh
+var rotated = rotate_image(image, 90)
+print("Xoay ảnh 90 độ: thành công")
+
+// Lật ảnh ngang
+var flipped_h = flip_image_horizontal(image)
+print("Lật ảnh ngang: thành công")
+
+// Lật ảnh dọc
+var flipped_v = flip_image_vertical(image)
+print("Lật ảnh dọc: thành công")
+
+// Phân tích độ sáng
+var brightness = calculate_brightness(image)
+print("Độ sáng ảnh: " + str(brightness))
+
+// Phân tích độ tương phản
+var contrast = calculate_contrast(image)
+print("Độ tương phản: " + str(contrast))
+
+// Phát hiện cạnh
+var edges = detect_edges(image)
+print("Phát hiện cạnh: thành công")
+
+// Chuyển đổi RGB sang HSV
+var rgb_color = {"r": 255, "g": 0, "b": 0}
+var hsv_color = rgb_to_hsv(rgb_color["r"], rgb_color["g"], rgb_color["b"])
+print("RGB sang HSV: H=" + str(hsv_color["h"]) + " S=" + str(hsv_color["s"]) + " V=" + str(hsv_color["v"]))
+
+// Chuyển đổi HSV sang RGB
+var back_to_rgb = hsv_to_rgb(hsv_color["h"], hsv_color["s"], hsv_color["v"])
+print("HSV sang RGB: R=" + str(back_to_rgb["r"]) + " G=" + str(back_to_rgb["g"]) + " B=" + str(back_to_rgb["b"]))
+
+// Điều chỉnh độ sáng
+var brightened = adjust_brightness(image, 1.5)
+print("Điều chỉnh độ sáng: thành công")
+
+// Điều chỉnh độ tương phản
+var contrasted = adjust_contrast(image, 1.2)
+print("Điều chỉnh độ tương phản: thành công")
+
+// Chuyển đổi sang grayscale
+var grayscale_img = convert_to_grayscale(image)
+print("Chuyển đổi sang grayscale: thành công")
+
+// Chuyển đổi sang RGB
+var rgb_img = convert_to_rgb(image)
+print("Chuyển đổi sang RGB: thành công")
+
+print("")
+print("=== Image Processing Module Examples Completed ===")

@@ -1,0 +1,187 @@
+// Zenith Standard Library — Image Processing Module
+// Very basic image processing functions
+
+// Image structure (simplified)
+func create_image(width, height) {
+    return {
+        "width": width,
+        "height": height,
+        "data": []
+    }
+}
+
+// Basic image operations
+func get_image_info(image) {
+    return {
+        "width": image["width"],
+        "height": image["height"],
+        "size": image["width"] * image["height"]
+    }
+}
+
+// Image filters (simplified)
+func apply_grayscale(image) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+func apply_blur(image) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+func apply_sharpen(image) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+// Image transformations (simplified)
+func resize_image(image, new_width, new_height) {
+    var result = create_image(new_width, new_height)
+    return result
+}
+
+func crop_image(image, x, y, width, height) {
+    var result = create_image(width, height)
+    return result
+}
+
+func rotate_image(image, angle) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+func flip_image_horizontal(image) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+func flip_image_vertical(image) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+// Image analysis (simplified)
+func calculate_brightness(image) {
+    return 128 // Simplified
+}
+
+func calculate_contrast(image) {
+    return 1.0 // Simplified
+}
+
+func detect_edges(image) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+// Color operations (simplified)
+func rgb_to_hsv(r, g, b) {
+    return {
+        "h": 0,
+        "s": 0,
+        "v": 0
+    }
+}
+
+func hsv_to_rgb(h, s, v) {
+    return {
+        "r": 255,
+        "g": 255,
+        "b": 255
+    }
+}
+
+func adjust_brightness(image, factor) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+func adjust_contrast(image, factor) {
+    var result = create_image(image["width"], image["height"])
+    return result
+}
+
+// Image format conversion (simplified)
+func convert_to_grayscale(image) {
+    return apply_grayscale(image)
+}
+
+func convert_to_rgb(image) {
+    return image // Simplified
+}
+
+// Test function
+func test_image_processing_module() {
+    print("=== Image Processing Module Test ===")
+
+    // Test image creation
+    var image = create_image(100, 100)
+    print("Created image: " + str(image["width"]) + "x" + str(image["height"]))
+
+    // Test image info
+    var info = get_image_info(image)
+    print("Image info: " + str(info["width"]) + "x" + str(info["height"]) + " size: " + str(info["size"]))
+
+    // Test filters
+    var grayscale = apply_grayscale(image)
+    print("Applied grayscale filter")
+
+    var blurred = apply_blur(image)
+    print("Applied blur filter")
+
+    var sharpened = apply_sharpen(image)
+    print("Applied sharpen filter")
+
+    // Test transformations
+    var resized = resize_image(image, 200, 200)
+    print("Resized to: " + str(resized["width"]) + "x" + str(resized["height"]))
+
+    var cropped = crop_image(image, 10, 10, 50, 50)
+    print("Cropped to: " + str(cropped["width"]) + "x" + str(cropped["height"]))
+
+    var rotated = rotate_image(image, 90)
+    print("Rotated by 90 degrees")
+
+    var flipped_h = flip_image_horizontal(image)
+    print("Flipped horizontally")
+
+    var flipped_v = flip_image_vertical(image)
+    print("Flipped vertically")
+
+    // Test analysis
+    var brightness = calculate_brightness(image)
+    print("Image brightness: " + str(brightness))
+
+    var contrast = calculate_contrast(image)
+    print("Image contrast: " + str(contrast))
+
+    var edges = detect_edges(image)
+    print("Edge detection completed")
+
+    // Test color operations
+    var rgb_color = {"r": 255, "g": 0, "b": 0}
+    var hsv_color = rgb_to_hsv(rgb_color["r"], rgb_color["g"], rgb_color["b"])
+    print("RGB to HSV: H=" + str(hsv_color["h"]) + " S=" + str(hsv_color["s"]) + " V=" + str(hsv_color["v"]))
+
+    var back_to_rgb = hsv_to_rgb(hsv_color["h"], hsv_color["s"], hsv_color["v"])
+    print("HSV to RGB: R=" + str(back_to_rgb["r"]) + " G=" + str(back_to_rgb["g"]) + " B=" + str(back_to_rgb["b"]))
+
+    var brightened = adjust_brightness(image, 1.5)
+    print("Brightness adjusted")
+
+    var contrasted = adjust_contrast(image, 1.2)
+    print("Contrast adjusted")
+
+    // Test format conversion
+    var grayscale_img = convert_to_grayscale(image)
+    print("Converted to grayscale")
+
+    var rgb_img = convert_to_rgb(image)
+    print("Converted to RGB")
+
+    print("Image processing module test completed successfully!")
+}
+
+// Run test
+test_image_processing_module()

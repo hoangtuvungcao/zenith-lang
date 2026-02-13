@@ -1,0 +1,55 @@
+// Zenith Standard Library — Encoding Module
+// Text encoding and decoding utilities
+
+import std.string
+
+func url_encode(s) {
+    return sys_exec("echo -n '" + s + "' | xxd -p | tr -d '\n' | sed 's/../%&/g'")
+}
+
+func url_decode(s) {
+    return sys_exec("echo -n '" + s + "' | sed 's/%/\\\\x/g' | xxd -r -p")
+}
+
+func html_encode(s) {
+    var result = s
+    result = str_replace(result, "&", "&amp;")
+    result = str_replace(result, "<", "&lt;")
+    result = str_replace(result, ">", "&gt;")
+    result = str_replace(result, "\"", "&quot;")
+    result = str_replace(result, "'", "&#39;")
+    return result
+}
+
+func html_decode(s) {
+    var result = s
+    result = str_replace(result, "&amp;", "&")
+    result = str_replace(result, "&lt;", "<")
+    result = str_replace(result, "&gt;", ">")
+    result = str_replace(result, "&quot;", "\"")
+    result = str_replace(result, "&#39;", "'")
+    return result
+}
+
+func hex_encode(s) {
+    return sys_exec("echo -n '" + s + "' | xxd -p | tr -d '\n'")
+}
+
+func hex_decode(s) {
+    return sys_exec("echo -n '" + s + "' | xxd -r -p")
+}
+
+func escape_shell(s) {
+    return sys_exec("echo -n '" + s + "' | sed 's/[^a-zA-Z0-9]/\\\\&/g'")
+}
+
+func remove_special_chars(s) {
+    return s
+}
+
+func normalize_whitespace(s) {
+    var result = str_replace(s, "\t", " ")
+    result = str_replace(result, "\n", " ")
+    result = str_replace(result, "  ", " ")
+    return result
+}

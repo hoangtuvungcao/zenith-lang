@@ -1,0 +1,118 @@
+// Machine Learning Module Example
+// Hướng dẫn sử dụng Module Machine Learning
+
+import std.machine_learning
+import std.math
+
+print("=== Machine Learning Module Examples ===")
+print("")
+
+// Chuẩn bị dữ liệu
+var x_data = [1, 2, 3, 4, 5]
+var y_data = [2, 4, 6, 8, 10]
+print("Dữ liệu training:")
+print("X: " + str(x_data))
+print("Y: " + str(y_data))
+
+// 1. Linear Regression
+var regression = linear_regression(x_data, y_data)
+print("")
+print("=== Linear Regression ===")
+print("Slope: " + str(regression["slope"]))
+print("Intercept: " + str(regression["intercept"]))
+
+// Dự đoán với regression
+var test_x = 6
+var predicted_y = regression["slope"] * test_x + regression["intercept"]
+print("Dự đoán Y khi X=" + str(test_x) + ": " + str(predicted_y))
+
+// 2. K-means Clustering
+var cluster_data = [1, 2, 3, 10, 11, 12, 20, 21, 22]
+print("")
+print("=== K-means Clustering ===")
+print("Dữ liệu: " + str(cluster_data))
+
+var centroids = k_means_clustering(cluster_data, 3)
+print("Số centroids: " + str(len(centroids)))
+print("Centroids: " + str(centroids))
+
+// 3. Data Normalization
+var raw_data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+print("")
+print("=== Data Normalization ===")
+print("Dữ liệu gốc: " + str(raw_data))
+
+var normalized = normalize_data(raw_data)
+print("Dữ liệu chuẩn hóa: " + str(normalized))
+
+// 4. Train/Test Split
+var full_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print("")
+print("=== Train/Test Split ===")
+print("Dữ liệu đầy đủ: " + str(full_data))
+
+var split = train_test_split(full_data, 0.3)
+print("Train data: " + str(split["train"]))
+print("Test data: " + str(split["test"]))
+
+// 5. Accuracy Calculation
+var predictions = [1, 2, 3, 4, 5]
+var actual = [1, 2, 0, 4, 5]
+print("")
+print("=== Accuracy Calculation ===")
+print("Predictions: " + str(predictions))
+print("Actual: " + str(actual))
+
+var accuracy = calculate_accuracy(predictions, actual)
+print("Accuracy: " + str(accuracy))
+
+// 6. Neural Network
+print("")
+print("=== Neural Network ===")
+var model = create_neural_network(3, 5, 2)
+print("Neural network created:")
+print("Input size: " + str(model["input_size"]))
+print("Hidden size: " + str(model["hidden_size"]))
+print("Output size: " + str(model["output_size"]))
+
+// Train model
+var x_train = [[1, 2, 3], [4, 5, 6]]
+var y_train = [[1, 0], [0, 1]]
+var trained_model = train_model(model, x_train, y_train)
+print("Model trained: thành công")
+
+// Prediction
+var test_input = [1, 2, 3]
+var prediction = predict_model(trained_model, test_input)
+print("Prediction for " + str(test_input) + ": " + str(prediction))
+
+// 7. Distance Metrics
+var point1 = [1, 2, 3]
+var point2 = [4, 5, 6]
+print("")
+print("=== Distance Metrics ===")
+print("Point 1: " + str(point1))
+print("Point 2: " + str(point2))
+
+var euclid_dist = euclidean_distance(point1, point2)
+print("Euclidean distance: " + str(euclid_dist))
+
+var manhattan_dist = manhattan_distance(point1, point2)
+print("Manhattan distance: " + str(manhattan_dist))
+
+// 8. K-Nearest Neighbors
+var train_points = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+var test_point = [2, 3]
+print("")
+print("=== K-Nearest Neighbors ===")
+print("Training points: " + str(train_points))
+print("Test point: " + str(test_point))
+
+var neighbors = k_nearest_neighbors(train_points, test_point, 3)
+print("3 nearest neighbors: " + str(neighbors))
+
+var classification = classify_point(neighbors)
+print("Classification: " + classification)
+
+print("")
+print("=== Machine Learning Module Examples Completed ===")

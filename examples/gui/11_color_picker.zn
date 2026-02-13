@@ -1,0 +1,117 @@
+// 11_color_picker.zn - Color Picker Example
+// Demonstrates: Color selection, RGB values, UI updates
+
+func build_color_ui(red, green, blue) {
+    var color_preview = {
+        "type": "Container",
+        "child": {
+            "type": "Text",
+            "text": "█████ COLOR PREVIEW █████"
+        }
+    }
+
+    return {
+        "type": "Center",
+        "child": {
+            "type": "Column",
+            "children": [
+            { "type": "Text", "text": "🎨 Color Picker" } ,
+
+            color_preview,
+
+            { "type": "Text", "text": "RGB: (" + str(red) + ", " + str(green) + ", " + str(blue) + ")" } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Text", "text": "Red:" } ,
+                { "type": "Button", "label": "-", "on_click": "red_down" } ,
+                { "type": "Button", "label": "+", "on_click": "red_up" }
+                ]
+            } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Text", "text": "Green:" } ,
+                { "type": "Button", "label": "-", "on_click": "green_down" } ,
+                { "type": "Button", "label": "+", "on_click": "green_up" }
+                ]
+            } ,
+
+            {
+                "type": "Row",
+                "children": [
+                { "type": "Text", "text": "Blue:" } ,
+                { "type": "Button", "label": "-", "on_click": "blue_down" } ,
+                { "type": "Button", "label": "+", "on_click": "blue_up" }
+                ]
+            } ,
+
+            { "type": "Button", "label": "Reset to Black", "on_click": "reset" }
+            ]
+        }
+    }
+}
+
+func clamp(value, min, max) {
+    if (value < min) { return min }
+    if (value > max) { return max }
+    return value
+}
+
+func main() {
+    println("Starting Color Picker...")
+
+    var state = create_state( {
+        "red": 128,
+        "green": 64,
+        "blue": 192
+    } )
+
+    while (true) {
+        var current = get_state(state)
+        var r = current["red"]
+        var g = current["green"]
+        var b = current["blue"]
+
+        render_ui(build_color_ui(r, g, b))
+
+        var event = wait_for_event()
+
+        if (event["type"] == "click") {
+            if (event["id"] == "red_up") {
+                current["red"] = clamp(r + 10, 0, 255)
+                set_state(state, current)
+            }
+            else if (event["id"] == "red_down") {
+                current["red"] = clamp(r - 10, 0, 255)
+                set_state(state, current)
+            }
+            else if (event["id"] == "green_up") {
+                current["green"] = clamp(g + 10, 0, 255)
+                set_state(state, current)
+            }
+            else if (event["id"] == "green_down") {
+                current["green"] = clamp(g - 10, 0, 255)
+                set_state(state, current)
+            }
+            else if (event["id"] == "blue_up") {
+                current["blue"] = clamp(b + 10, 0, 255)
+                set_state(state, current)
+            }
+            else if (event["id"] == "blue_down") {
+                current["blue"] = clamp(b - 10, 0, 255)
+                set_state(state, current)
+            }
+            else if (event["id"] == "reset") {
+                current["red"] = 0
+                current["green"] = 0
+                current["blue"] = 0
+                set_state(state, current)
+            }
+        }
+    }
+}
+
+main()

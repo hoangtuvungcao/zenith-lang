@@ -1,0 +1,124 @@
+// Database Module Simple Example
+// Hướng dẫn sử dụng Module Database (đơn giản)
+
+import std.database
+
+print("=== Database Module Simple Examples ===")
+print("")
+
+// 1. Simulate database connection
+print("1. Database connection:")
+var connection = {
+    "connected": true,
+    "database": "testdb",
+    "host": "localhost"
+}
+print("Connected: " + str(connection["connected"]))
+print("Database: " + connection["database"])
+
+// 2. Simulate query execution
+print("")
+print("2. Query execution:")
+var query = "SELECT * FROM users"
+print("Query: " + query)
+
+var result = {
+    "success": true,
+    "rows": 5,
+    "data": ["user1", "user2", "user3", "user4", "user5"]
+}
+print("Query success: " + str(result["success"]))
+print("Rows returned: " + str(result["rows"]))
+
+// 3. Simulate insert operation
+print("")
+print("3. Insert operation:")
+var insert_data = {"name": "New User", "age": 25}
+print("Insert data: " + str(insert_data))
+
+var insert_result = {
+    "success": true,
+    "inserted_id": 6
+}
+print("Insert success: " + str(insert_result["success"]))
+print("Inserted ID: " + str(insert_result["inserted_id"]))
+
+// 4. Simulate update operation
+print("")
+print("4. Update operation:")
+var update_data = {"name": "Updated User"}
+print("Update data: " + str(update_data))
+
+var update_result = {
+    "success": true,
+    "rows_affected": 1
+}
+print("Update success: " + str(update_result["success"]))
+print("Rows affected: " + str(update_result["rows_affected"]))
+
+// 5. Simulate delete operation
+print("")
+print("5. Delete operation:")
+var delete_condition = "id = 1"
+print("Delete condition: " + delete_condition)
+
+var delete_result = {
+    "success": true,
+    "rows_affected": 1
+}
+print("Delete success: " + str(delete_result["success"]))
+print("Rows affected: " + str(delete_result["rows_affected"]))
+
+// 6. Simulate transaction
+print("")
+print("6. Transaction:")
+var transaction = {
+    "active": true,
+    "operations": ["INSERT", "UPDATE", "DELETE"]
+}
+print("Transaction active: " + str(transaction["active"]))
+print("Operations: " + str(transaction["operations"]))
+
+var commit_result = {
+    "success": true
+}
+print("Transaction commit: " + str(commit_result["success"]))
+
+// 7. Simulate table operations
+print("")
+print("7. Table operations:")
+var table_info = {
+    "name": "users",
+    "columns": 4,
+    "rows": 100
+}
+print("Table name: " + table_info["name"])
+print("Columns: " + str(table_info["columns"]))
+print("Rows: " + str(table_info["rows"]))
+
+// 8. Simulate backup
+print("")
+print("8. Database backup:")
+var backup_info = {
+    "path": "/backup/testdb.sql",
+    "size": "10MB",
+    "timestamp": "2025-02-12 13:57:00"
+}
+print("Backup path: " + backup_info["path"])
+print("Backup size: " + backup_info["size"])
+
+// 9. Simulate disconnect
+print("")
+print("9. Database disconnect:")
+var disconnect_result = {
+    "success": true,
+    "message": "Disconnected successfully"
+}
+print("Disconnect success: " + str(disconnect_result["success"]))
+print("Message: " + disconnect_result["message"])
+
+print("")
+print("=== Database Module Simple Examples Completed ===")
+print("")
+print("Note: This example uses simulated database operations")
+print("Real database operations would require actual database connection")

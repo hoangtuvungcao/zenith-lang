@@ -1,0 +1,56 @@
+// Zenith Standard Library — Process Module
+// Process and system operations
+
+func exec(command) {
+    return sys_exec(command)
+}
+
+func exec_with_output(command) {
+    return sys_exec(command)
+}
+
+func exec_background(command) {
+    return sys_exec(command + " &")
+}
+
+func kill_process(pid) {
+    return sys_exec("kill " + pid)
+}
+
+func process_exists(pid) {
+    var result = sys_exec("ps -p " + pid + " > /dev/null 2>&1 && echo 'true' || echo 'false'")
+    return result == "true"
+}
+
+func list_processes() {
+    return sys_exec("ps aux")
+}
+
+func get_pid() {
+    return sys_exec("echo $$")
+}
+
+func sleep(seconds) {
+    return sys_exec("sleep " + seconds)
+}
+
+func env_var(name) {
+    return sys_exec("echo $" + name)
+}
+
+func set_env_var(name, value) {
+    return sys_exec("export " + name + "='" + value + "'")
+}
+
+func working_dir() {
+    return sys_exec("pwd")
+}
+
+func change_dir(path) {
+    return sys_exec("cd " + path)
+}
+
+func command_exists(command) {
+    var result = sys_exec("command -v " + command + " > /dev/null 2>&1 && echo 'true' || echo 'false'")
+    return result == "true"
+}

@@ -1,0 +1,12 @@
+[package]
+name = "zenith-ui-windows"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+egui = "0.26"
+eframe = { version = "0.26", default-features = false, features = ["glow"] }
+zenith-runtime = { path = "../../runtime" }
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["winuser"] }

@@ -1,0 +1,143 @@
+{
+    "name": "zenith-lang-vscode",
+    "displayName": "Zenith Languages",
+    "description": "Professional Zenith language",
+    "version": "1.0.2",
+    "publisher": "zenith-lang",
+    "icon": "icons/zenith.png",
+    "engines": {
+        "vscode": "^1.74.0",
+        "node": ">=16.0.0"
+    },
+    "activationEvents": [],
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "zenith",
+                "aliases": [
+                    "Zenith",
+                    "zn"
+                ],
+                "extensions": [
+                    ".zn"
+                ],
+                "icon": {
+                    "light": "./icons/zenith.svg",
+                    "dark": "./icons/zenith.svg"
+                },
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "zenith",
+                "scopeName": "source.zenith",
+                "path": "./syntaxes/zenith.tmLanguage.json",
+                "fileTypes": [
+                    "zn"
+                ]
+            }
+        ],
+        "snippets": [
+            {
+                "language": "zenith",
+                "path": "./snippets/zenith.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "zenith.runFile",
+                "title": "Run Zenith File",
+                "category": "Zenith",
+                "icon": "$(play)"
+            },
+            {
+                "command": "zenith.runFunction",
+                "title": "Run Function",
+                "category": "Zenith"
+            },
+            {
+                "command": "zenith.debugFunction",
+                "title": "Debug Function",
+                "category": "Zenith"
+            },
+            {
+                "command": "zenith.showModuleDocs",
+                "title": "Show Module Documentation",
+                "category": "Zenith"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "zenith.runFile",
+                "key": "ctrl+f5",
+                "mac": "cmd+f5"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "resourceLangId == zenith",
+                    "command": "zenith.runFile",
+                    "group": "zenith@1"
+                }
+            ],
+            "editor/title": [
+                {
+                    "when": "resourceLangId == zenith",
+                    "command": "zenith.runFile",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Zenith",
+            "properties": {
+                "zenith.compilerPath": {
+                    "type": "string",
+                    "default": "zenith",
+                    "description": "Path to Zenith compiler executable (default: zenith from system PATH)"
+                },
+                "zenith.enableFormatting": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable automatic formatting"
+                },
+                "zenith.enableDiagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable real-time diagnostics"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/vscode": "1.74.0",
+        "@types/node": "16.x",
+        "typescript": "^4.9.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zenith-lang/zenith.git"
+    },
+    "keywords": [
+        "zenith",
+        "programming language",
+        "vscode",
+        "intellisense",
+        "formatter",
+        "diagnostics"
+    ],
+    "author": "Zenith Team",
+    "license": "MIT"
+}

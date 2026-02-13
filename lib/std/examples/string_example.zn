@@ -1,0 +1,62 @@
+// String Module Example
+// Hướng dẫn sử dụng Module String từng bước
+
+import std.string
+
+print("=== String Module Examples ===")
+print("")
+
+var text = "  Hello World  "
+print("Chuỗi gốc: '" + text + "'")
+print("")
+
+// 1. trim() - Xóa khoảng trắng đầu cuối
+var trimmed = trim(text)
+print("trim('" + text + "') = '" + trimmed + "'")
+print("")
+
+// 2. starts_with() - Kiểm tra bắt đầu
+var hello = "Hello World"
+print("starts_with('Hello World', 'Hello') = " + str(starts_with(hello, "Hello")))
+print("starts_with('Hello World', 'World') = " + str(starts_with(hello, "World")))
+print("")
+
+// 3. ends_with() - Kiểm tra kết thúc
+print("ends_with('Hello World', 'World') = " + str(ends_with(hello, "World")))
+print("ends_with('Hello World', 'Hello') = " + str(ends_with(hello, "Hello")))
+print("")
+
+// 4. repeat() - Lặp lại chuỗi
+var repeated = repeat("Ha", 3)
+print("repeat('Ha', 3) = '" + repeated + "'")
+print("")
+
+// 5. pad_left() - Đệm bên trái
+var padded_left = pad_left("42", 6, "0")
+print("pad_left('42', 6, '0') = '" + padded_left + "'")
+print("")
+
+// 6. pad_right() - Đệm bên phải
+var padded_right = pad_right("42", 6, "0")
+print("pad_right('42', 6, '0') = '" + padded_right + "'")
+print("")
+
+// 7. reverse() - Đảo ngược chuỗi
+var reversed = reverse("Hello")
+print("reverse('Hello') = '" + reversed + "'")
+print("")
+
+// 8. join() - Nối mảng thành chuỗi
+var words = ["Hello", "World", "Zenith"]
+var joined = join(words, " ")
+print("join(['Hello', 'World', 'Zenith'], ' ') = '" + joined + "'")
+print("")
+
+// 9. Ví dụ kết hợp
+var name = "  Zenith  "
+name = trim(name)
+var greeting = "Hello, " + name + "!"
+print("Kết hợp: '" + greeting + "'")
+print("")
+
+print("=== String Module Test Completed ===")

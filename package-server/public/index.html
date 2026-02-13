@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith Package Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e1e5e9;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Packages Grid */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .package-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .package-version {
+            background: #e8f4fd;
+            color: #667eea;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .package-description {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .package-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .package-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .package-downloads {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .package-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-small {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        /* Upload Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #667eea;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .file-input {
+            border: 2px dashed #667eea;
+            background: #f8f9fa;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .file-input:hover {
+            background: #e8f4fd;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>Zenith Package Manager</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="refreshPackages()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button class="btn btn-primary" onclick="showUploadModal()">
+                        <i class="fas fa-upload"></i> Upload Package
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalPackages">-</span>
+                    <span class="stat-label">Total Packages</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalDownloads">-</span>
+                    <span class="stat-label">Total Downloads</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="standardLib">-</span>
+                    <span class="stat-label">Standard Library</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="community">-</span>
+                    <span class="stat-label">Community</span>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search packages...">
+                    <button class="btn btn-primary" onclick="searchPackages()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="standard">Standard Library</button>
+                    <button class="filter-btn" data-filter="community">Community</button>
+                </div>
+            </div>
+
+            <!-- Packages Grid -->
+            <div id="packagesContainer">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading packages...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Upload Package</h2>
+                <button class="close-btn" onclick="hideUploadModal()">&times;</button>
+            </div>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" class="form-input" id="packageName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Version</label>
+                    <input type="text" class="form-input" id="packageVersion" placeholder="1.0.0" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-input form-textarea" id="packageDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Author</label>
+                    <input type="text" class="form-input" id="packageAuthor">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Keywords (comma separated)</label>
+                    <input type="text" class="form-input" id="packageKeywords" placeholder="zenith, module, library">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Package File (.zn or .zip)</label>
+                    <div class="file-input" onclick="document.getElementById('packageFile').click()">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;"></i>
+                        <p>Click to upload or drag and drop</p>
+                        <input type="file" id="packageFile" accept=".zn,.zip" style="display: none;" required>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload Package
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="hideUploadModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let packages = [];
+        let currentFilter = 'all';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPackages();
+            loadStats();
+            setupEventListeners();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search input
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchPackages();
+                }
+            });
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    filterPackages();
+                });
+            });
+
+            // Upload form
+            document.getElementById('uploadForm').addEventListener('submit', handleUpload);
+
+            // File input
+            document.getElementById('packageFile').addEventListener('change', function(e) {
+                const fileName = e.target.files[0]?.name || '';
+                document.querySelector('.file-input p').textContent = fileName || 'Click to upload or drag and drop';
+            });
+        }
+
+        // Load packages
+        async function loadPackages() {
+            try {
+                const response = await fetch('/api/packages');
+                packages = await response.json();
+                renderPackages();
+            } catch (error) {
+                console.error('Failed to load packages:', error);
+                document.getElementById('packagesContainer').innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: white;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>Failed to load packages</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Load stats
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                document.getElementById('totalPackages').textContent = stats.totalPackages || 0;
+                document.getElementById('totalDownloads').textContent = stats.totalDownloads || 0;
+                
+                // Calculate standard library vs community packages
+                const standardCount = packages.filter(p => p.isStandardLibrary).length;
+                const communityCount = packages.length - standardCount;
+                
+                document.getElementById('standardLib').textContent = standardCount;
+                document.getElementById('community').textContent = communityCount;
+            } catch (error) {
+                console.error('Failed to load stats:', error);
+            }
+        }
+
+        // Render packages
+        function renderPackages(packagesToRender = packages) {
+            const container = document.getElementById('packagesContainer');
+            
+            if (packagesToRender.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: white;">
+                        <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>No packages found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const packagesHTML = packagesToRender.map(pkg => `
+                <div class="package-card" onclick="viewPackage('${pkg.name}')">
+                    <div class="package-header">
+                        <div class="package-name">${pkg.name}</div>
+                        <div class="package-version">v${pkg.version}</div>
+                    </div>
+                    <div class="package-description">${pkg.description}</div>
+                    <div class="package-meta">
+                        <div class="package-author">
+                            <i class="fas fa-user"></i>
+                            ${pkg.author || 'Anonymous'}
+                        </div>
+                        <div class="package-downloads">
+                            <i class="fas fa-download"></i>
+                            ${pkg.downloads || 0}
+                        </div>
+                    </div>
+                    <div class="package-actions">
+                        <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); downloadPackage('${pkg.name}')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        ${!pkg.isStandardLibrary ? `
+                            <button class="btn btn-secondary btn-small" onclick="event.stopPropagation(); deletePackage('${pkg.name}')">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = `<div class="packages-grid">${packagesHTML}</div>`;
+        }
+
+        // Filter packages
+        function filterPackages() {
+            let filtered = packages;
+            
+            if (currentFilter === 'standard') {
+                filtered = packages.filter(p => p.isStandardLibrary);
+            } else if (currentFilter === 'community') {
+                filtered = packages.filter(p => !p.isStandardLibrary);
+            }
+            
+            renderPackages(filtered);
+        }
+
+        // Search packages
+        async function searchPackages() {
+            const query = document.getElementById('searchInput').value.trim();
+            
+            if (!query) {
+                filterPackages();
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+                const results = await response.json();
+                renderPackages(results);
+            } catch (error) {
+                console.error('Search failed:', error);
+            }
+        }
+
+        // Download package
+        function downloadPackage(name) {
+            window.open(`/api/packages/${name}/download`, '_blank');
+        }
+
+        // View package details
+        function viewPackage(name) {
+            const pkg = packages.find(p => p.name === name);
+            if (pkg) {
+                alert(`Package: ${pkg.name}\\nVersion: ${pkg.version}\\nDescription: ${pkg.description}\\nAuthor: ${pkg.author || 'Anonymous'}\\nDownloads: ${pkg.downloads || 0}`);
+            }
+        }
+
+        // Delete package
+        async function deletePackage(name) {
+            if (!confirm(`Are you sure you want to delete the package "${name}"?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/packages/${name}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    await loadPackages();
+                    await loadStats();
+                } else {
+                    alert('Failed to delete package');
+                }
+            } catch (error) {
+                console.error('Delete failed:', error);
+                alert('Failed to delete package');
+            }
+        }
+
+        // Refresh packages
+        function refreshPackages() {
+            loadPackages();
+            loadStats();
+        }
+
+        // Upload modal
+        function showUploadModal() {
+            document.getElementById('uploadModal').classList.add('active');
+        }
+
+        function hideUploadModal() {
+            document.getElementById('uploadModal').classList.remove('active');
+            document.getElementById('uploadForm').reset();
+            document.querySelector('.file-input p').textContent = 'Click to upload or drag and drop';
+        }
+
+        // Handle upload
+        async function handleUpload(e) {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            const fileInput = document.getElementById('packageFile');
+            
+            if (!fileInput.files[0]) {
+                alert('Please select a package file');
+                return;
+            }
+
+            const metadata = {
+                name: document.getElementById('packageName').value,
+                version: document.getElementById('packageVersion').value,
+                description: document.getElementById('packageDescription').value,
+                author: document.getElementById('packageAuthor').value,
+                keywords: document.getElementById('packageKeywords').value.split(',').map(k => k.trim()).filter(k => k)
+            };
+
+            formData.append('package', fileInput.files[0]);
+            formData.append('metadata', JSON.stringify(metadata));
+
+            try {
+                const response = await fetch('/api/packages', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    hideUploadModal();
+                    await loadPackages();
+                    await loadStats();
+                    alert('Package uploaded successfully!');
+                } else {
+                    const error = await response.json();
+                    alert('Upload failed: ' + error.error);
+                }
+            } catch (error) {
+                console.error('Upload failed:', error);
+                alert('Upload failed');
+            }
+        }
+    </script>
+</body>
+</html>

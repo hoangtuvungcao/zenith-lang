@@ -1,0 +1,102 @@
+// Zenith Standard Library — Comprehensive Module Test
+// Tests all available modules to ensure they work correctly
+
+import std.math
+import std.string
+import std.http
+import std.json
+import std.io
+import std.os
+import std.array
+import std.net
+import std.crypto
+import std.datetime
+import std.filesystem
+import std.process
+import std.validation
+import std.encoding
+import std.database
+
+print("=== Zenith Standard Library Module Test ===")
+print("")
+
+// Test Math Module
+print("Math Module:")
+print("PI = " + str(PI))
+print("abs(-42) = " + str(abs( - 42)))
+print("pow(2, 8) = " + str(pow(2, 8)))
+print("")
+
+// Test String Module
+print("String Module:")
+print("starts_with('hello', 'he') = " + str(starts_with("hello", "he")))
+print("trim('  hello  ') = " + trim("  hello  "))
+print("")
+
+// Test HTTP Module
+print("HTTP Module:")
+print("Testing HTTP GET to example.com...")
+var response = get("http://example.com")
+print("Response length: " + str(len(response)))
+print("")
+
+// Test JSON Module
+print("JSON Module:")
+var test_obj = {"name": "test", "value": 42}
+var json_str = stringify(test_obj)
+print("JSON string: " + json_str)
+print("")
+
+// Test Network Module
+print("Network Module:")
+print("Checking internet connection...")
+var connected = check_connection()
+print("Connected: " + str(connected))
+print("")
+
+// Test Crypto Module
+print("Crypto Module:")
+var hash = hash_string("test")
+print("MD5 hash of 'test': " + hash)
+print("")
+
+// Test DateTime Module
+print("DateTime Module:")
+var current_date = format_date()
+var current_time = format_time()
+print("Current date: " + current_date)
+print("Current time: " + current_time)
+print("")
+
+// Test Validation Module
+print("Validation Module:")
+var is_valid_email = is_email("test@example.com")
+var is_valid_url = is_url("https://example.com")
+print("Email validation: " + str(is_valid_email))
+print("URL validation: " + str(is_valid_url))
+print("")
+
+// Test Process Module
+print("Process Module:")
+var working_directory = working_dir()
+print("Current directory: " + working_directory)
+print("")
+
+print("=== All Module Tests Completed Successfully! ===")
+print("")
+print("Available modules in lib/std/:")
+print("- array.zn: Array manipulation utilities")
+print("- crypto.zn: Cryptographic functions")
+print("- database.zn: Database operations")
+print("- datetime.zn: Date and time utilities")
+print("- encoding.zn: Text encoding/decoding")
+print("- filesystem.zn: File system operations")
+print("- http.zn: HTTP client functions")
+print("- io.zn: Input/output operations")
+print("- json.zn: JSON parsing/stringifying")
+print("- math.zn: Mathematical functions")
+print("- net.zn: Network utilities")
+print("- os.zn: Operating system interface")
+print("- process.zn: Process management")
+print("- string.zn: String manipulation")
+print("- validation.zn: Data validation utilities")

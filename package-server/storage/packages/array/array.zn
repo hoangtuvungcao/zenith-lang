@@ -1,0 +1,95 @@
+// Zenith Standard Library — Array Module
+// Usage: import std.array
+
+func contains(arr, value) {
+    for item in arr {
+        if item == value {
+            return true
+        }
+    }
+    return false
+}
+
+func index_of(arr, value) {
+    var i = 0
+    for item in arr {
+        if item == value {
+            return i
+        }
+        i = i + 1
+    }
+    return - 1
+}
+
+func slice(arr, start, end) {
+    var result = []
+    var i = start
+    while i < end {
+        push(result, arr[i])
+        i = i + 1
+    }
+    return result
+}
+
+func reverse_arr(arr) {
+    var result = []
+    var i = len(arr) - 1
+    while i >= 0 {
+        push(result, arr[i])
+        i = i - 1
+    }
+    return result
+}
+
+func range(start, end) {
+    var result = []
+    var i = start
+    while i < end {
+        push(result, i)
+        i = i + 1
+    }
+    return result
+}
+
+func sum(arr) {
+    var total = 0
+    for item in arr {
+        total = total + item
+    }
+    return total
+}
+
+func min_arr(arr) {
+    if len(arr) == 0 {
+        return 0
+    }
+    var result = arr[0]
+    for item in arr {
+        if item < result {
+            result = item
+        }
+    }
+    return result
+}
+
+func max_arr(arr) {
+    if len(arr) == 0 {
+        return 0
+    }
+    var result = arr[0]
+    for item in arr {
+        if item > result {
+            result = item
+        }
+    }
+    return result
+}
+
+func push(arr, value) {
+    arr[len(arr)] = value
+    return arr
+}
+
+func unique(arr) {
+    return arr
+}

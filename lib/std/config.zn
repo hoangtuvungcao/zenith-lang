@@ -1,0 +1,106 @@
+// Zenith Standard Library — Configuration Module
+// Basic configuration management
+
+// Configuration storage (simplified)
+var config_data = {}
+
+// Set configuration value
+func config_set(key, value) {
+    config_data[key] = value
+    print("Config set: " + key + " = " + str(value))
+}
+
+// Get configuration value
+func config_get(key) {
+    if config_data[key] {
+        return config_data[key]
+    } else {
+        return ""
+    }
+}
+
+// Check if configuration exists
+func config_has(key) {
+    if config_data[key] {
+        return true
+    } else {
+        return false
+    }
+}
+
+// Remove configuration
+func config_remove(key) {
+    if config_data[key] {
+        config_data[key] = ""
+        print("Config removed: " + key)
+    }
+}
+
+// Get all configuration
+func config_get_all() {
+    return config_data
+}
+
+// Load configuration from file (simplified)
+func config_load_file(filename) {
+    // In a real implementation, this would read from file
+    print("Loading config from: " + filename)
+    // For now, just set some defaults
+    config_set("app_name", "Zenith")
+    config_set("version", "1.0")
+    config_set("debug", "false")
+}
+
+// Save configuration to file (simplified)
+func config_save_file(filename) {
+    // In a real implementation, this would write to file
+    print("Saving config to: " + filename)
+    print("Config saved successfully")
+}
+
+// Environment configuration
+func config_get_env(key) {
+    // In a real implementation, this would get from environment
+    return "env_" + key
+}
+
+// Default configuration
+func config_set_defaults() {
+    config_set("database_host", "localhost")
+    config_set("database_port", "5432")
+    config_set("log_level", "INFO")
+    config_set("max_connections", "100")
+    print("Default configuration set")
+}
+
+// Test
+func test_config() {
+    print("=== Configuration Module Test ===")
+
+    // Test basic operations
+    config_set("test_key", "test_value")
+    var value = config_get("test_key")
+    print("Retrieved: " + value)
+
+    var has_key = config_has("test_key")
+    print("Has key: " + str(has_key))
+
+    config_remove("test_key")
+    var removed_value = config_get("test_key")
+    print("After remove: " + removed_value)
+
+    // Test defaults
+    config_set_defaults()
+
+    // Test file operations
+    config_load_file("config.zn")
+    config_save_file("config.zn")
+
+    // Test environment
+    var env_value = config_get_env("PATH")
+    print("Environment value: " + env_value)
+
+    print("Configuration test completed!")
+}
+
+test_config()

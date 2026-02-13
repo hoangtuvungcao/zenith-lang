@@ -1,0 +1,83 @@
+// Zenith Standard Library — String Module
+// Usage: import std.string
+
+func trim(s) {
+    // Simple trim: remove leading/trailing spaces
+    return str_replace(str_replace(s, "  ", " "), "  ", " ")
+}
+
+func starts_with(s, prefix) {
+    if len(s) < len(prefix) {
+        return false
+    }
+    var i = 0
+    while i < len(prefix) {
+        if char_at(s, i) != char_at(prefix, i) {
+            return false
+        }
+        i = i + 1
+    }
+    return true
+}
+
+func ends_with(s, suffix) {
+    if len(s) < len(suffix) {
+        return false
+    }
+    var start = len(s) - len(suffix)
+    var i = 0
+    while i < len(suffix) {
+        if char_at(s, start + i) != char_at(suffix, i) {
+            return false
+        }
+        i = i + 1
+    }
+    return true
+}
+
+func repeat(s, n) {
+    var result = ""
+    var i = 0
+    while i < n {
+        result = result + s
+        i = i + 1
+    }
+    return result
+}
+
+func pad_left(s, width, ch) {
+    while len(s) < width {
+        s = ch + s
+    }
+    return s
+}
+
+func pad_right(s, width, ch) {
+    while len(s) < width {
+        s = s + ch
+    }
+    return s
+}
+
+func reverse(s) {
+    var result = ""
+    var i = len(s) - 1
+    while i >= 0 {
+        result = result + char_at(s, i)
+        i = i - 1
+    }
+    return result
+}
+
+func join(arr, sep) {
+    var result = ""
+    var i = 0
+    for item in arr {
+        if i > 0 {
+            result = result + sep
+        }
+        result = result + str(item)
+        i = i + 1
+    }
+    return result
+}

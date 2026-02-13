@@ -1,0 +1,14 @@
+// Zenith Standard Library — Graphics Module
+// Basic graphics utilities
+
+import std.math
+
+// Color utilities
+func rgb_to_hex_simple(r, g, b) {
+    return "#" + str(r) + str(g) + str(b)
+}
+
+// Simple animation
+func lerp_simple(start, end, t) {
+    return start + (end - start) * t
+}

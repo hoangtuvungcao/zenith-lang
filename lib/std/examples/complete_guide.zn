@@ -1,0 +1,62 @@
+// Zenith Programming Language - Hướng dẫn hoàn chỉnh 
+// Complete Guide for Beginners 
+print("CHÀO MỪNG ĐẾN VỚI ZENITH PROGRAMMING LANGUAGE")
+print(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ")
+print("") //== == = PHẦN 1: CƠ BẢN VỀ ZENITH == == = 
+print("PHẦN 1: CƠ BẢN VỀ ZENITH")print("") // 1. Variables và Data Types 
+print("1️⃣ Variables và Data Types:")
+var name = "Zenith" 
+var version = "1.0" 
+var year = 2026 
+var pi = 3.14159 
+var is_awesome = true 
+print(" Language: " + name)
+print(" Version: " + version)
+print(" Year: " + str(year))
+print(" Pi: " + str(pi))
+print(" Is Awesome: " + str(is_awesome))
+print("") // 2. Arrays 
+print("2️⃣ Arrays(Mảng):")
+import std.array 
+var numbers = [1, 2, 3, 4, 5] 
+var fruits = ["Apple", "Banana", "Orange"] 
+print(" Numbers: " + str(numbers))
+print(" Fruits: " + str(fruits))print(" Sum of numbers: " + str(sum(numbers)))print(" Contains 3: " + str(contains(numbers, 3)))print(" Reverse: " + str(reverse_arr(numbers)))print("") // 3. Basic Operations print("3️⃣ Basic Operations:")import std.math var a = 10 var b = 3 print(" " + str(a) + " + " + str(b) + " = " + str(a + b))print(" " + str(a) + " - " + str(b) + " = " + str(a - b))print(" " + str(a) + " * " + str(b) + " = " + str(a * b))print(" " + str(a) + " / " + str(b) + " = " + str(a / b))print(" " + str(a) + " ^ " + str(b) + " = " + str(pow(a, b)))print(" abs(- 42)= " + str(abs( - 42)))print(" sqrt(16)= " + str(sqrt(16)))print("") // 4. String Operations print("4️⃣ String Operations:")import std.string var greeting = " Hello Zenith ! " print(" Original: '" + greeting + "'")print(" Trim: '" + trim(greeting) + "'")print(" Length: " + str(len(greeting)))print(" Starts with Hello: " + str(starts_with(greeting, "Hello")))print(" Uppercase: " + str_replace(greeting, "hello", "HELLO"))print("") //== == = PHẦN 2: CONTROL FLOW == == = print("PHẦN 2: CONTROL FLOW")print("") // 1. If - Else print("1️⃣ If - Else Statements:")var score = 85 if score >= 90 {
+    print(" Grade: A")} else if score >= 80 {
+        print(" Grade: B")} else if score >= 70 {
+            print(" Grade: C")} else {
+                print(" Grade: F")} print("") / / 2. For Loops print("2️For Loops:")print(" Numbers 1 - 5:")var counter = 1 while counter <= 5 {
+                    print(" " + str(counter))counter = counter + 1;
+                } print("")print(" Fruits:")for fruit in fruits {
+                    print(" 🍎 " + fruit)} print("") / / 3. While Loops print(" While Loops:")var loop_counter = 0 print(" Counting to 3:")while loop_counter < 3 {
+                        print(" Count: " + str(loop_counter))loop_counter = loop_counter + 1;
+                    } print("") / /== == = PHẦN 3: FUNCTIONS == == = print("PHẦN 3: FUNCTIONS")print("") / / 1. Basic Function print("Basic Functions:")func greet(name) {
+                        return "Hello, " + name + " ! ";
+                    } print(" " + greet("Zenith Developer"))print("") / / 2. Function with Parameters print("Functions with Multiple Parameters:")func calculate_area(width, height) {
+                        return width * height;
+                    } var area = calculate_area(10, 5)print(" Area of 10x5 rectangle: " + str(area))print("") / / 3. Function using Standard Library print("3️⃣ Functions using Standard Library:")func analyze_numbers(nums) {
+                        print(" Analysis of " + str(nums) + ":")print(" - Sum: " + str(sum(nums)))print(" - Average: " + str(sum(nums) / len(nums)))print(" - Min: " + str(min_arr(nums)))print(" - Max: " + str(max_arr(nums)))print(" - Contains 5: " + str(contains(nums, 5)))} analyze_numbers([3, 7, 2, 9, 5])print("") / /== == = PHẦN 4: ADVANCED FEATURES == == = print("PHẦN 4: ADVANCED FEATURES")print("") / / 1. Working with JSON print("1️⃣ JSON Operations:")import std.json var user_data = {
+                            "name": "Alice", "age": 30, "city": "Hanoi";
+                        } var json_string = stringify(user_data)print(" JSON: " + json_string)print("") / / 2. Date and Time print("2️⃣ Date and Time:")import std.datetime var current_time = now()var formatted_date = format_date()var formatted_time = format_time()print(" Timestamp: " + current_time)print(" Date: " + formatted_date)print(" Time: " + formatted_time)print(" Day of week: " + day_of_week())print("") / / 3. Cryptographic Functions print(" Cryptographic Functions:")import std.crypto var password = "my_secret_password" var hashed_password = sha256(password)var encoded_data = base64_encode("Hello Zenith ! ")print(" Original password: " + password)print(" SHA256 hash: " + hashed_password)print(" Base64 encoded: " + encoded_data)print("") / / 4. Network Operations print(" Network Operations:")import std.net print(" Checking internet connection...")var connected = check_connection()print(" Connected: " + str(connected))if connected {
+                            print(" Getting HTTP status of example.com...")var status = get_status("http: / / example.com")print(" HTTP Status: " + str(status))} print("") / / 5. File System Operations print("File System Operations:")import std.filesystem import std.os var working_directory = cwd()print(" Current directory: " + working_directory)print("") / /== == = PHẦN 5: REAL - WORLD EXAMPLES == == = print("PHẦN 5: REAL - WORLD EXAMPLES")print("") / / 1. Simple Calculator print("Simple Calculator:")func calculator(operation, a, b) {
+                                if operation == "add" {
+                                    return a + b;
+                                } else if operation == "subtract" {
+                                    return a - b;
+                                } else if operation == "multiply" {
+                                    return a * b;
+                                } else if operation == "divide" {
+                                    return a / b;
+                                } else {
+                                    return "Invalid operation";
+                                }
+                            } print(" 10 + 5 = " + str(calculator("add", 10, 5)))print(" 10 - 5 = " + str(calculator("subtract", 10, 5)))print(" 10 * 5 = " + str(calculator("multiply", 10, 5)))print(" 10 / 5 = " + str(calculator("divide", 10, 5)))print("") / / 2. Data Validation print("Data Validation:")import std.validation func validate_user(email, age) {
+                                var errors = [] if len(email) < 5 {
+                                    push(errors, "Email too short")} if len(email) > 5 {
+                                        push(errors, "Email format OK")} if age < 18 || age > 120 {
+                                            push(errors, "Invalid age range")} if len(errors) == 0 {
+                                                return "User is valid ! ";
+                                            } else {
+                                                return "Errors: " + join(errors, ", ")}
+                                            } print(" Validating user1@example.com, age 25:")print(" " + validate_user("user1@example.com", 25))print(" Validating invalid_email, age 15:")print(" " + validate_user("invalid_email", 15))print("") / / 3. Simple Logger print("3️Simple Logger:")func log(level, message) {
+                                                var timestamp = format_timestamp(now())print(" [" + timestamp + "] [" + level + "] " + message)} log("INFO", "Application started")log("DEBUG", "Processing user request")log("WARN", "Deprecated API used")log("ERROR", "Database connection failed")print("") / /== == = PHẦN 6: BEST PRACTICES == == = print("PHẦN 6: BEST PRACTICES")print("")print("Best Practices in Zenith:")print(" 1. Luôn import modules ở đầu file")print(" 2. Sử dụng tên biến và hàm rõ ràng")print(" 3. Kiểm tra lỗi với các hàm system")print(" 4. Sử dụng comments để giải thích code phức tạp")print(" 5. Test từng function riêng lẻ")print(" 6. Sử dụng standard library thay vì tự viết lại")print(" 7. Xử lý edge cases(null, empty strings)")print("") / /== == = PHẦN 7: MODULE SYSTEM == == = print("PHẦN 7: MODULE SYSTEM")print("")print("🔧 Available Modules in Zenith:")print(" 📦 std.array - Array operations")print(" 📦 std.math - Mathematical functions")print(" 📦 std.string - String manipulation")print(" 📦 std.json - JSON handling")print(" 📦 std.http - HTTP client")print(" 📦 std.net - Network utilities")print(" 📦 std.crypto - Cryptographic functions")print(" 📦 std.datetime - Date / time utilities")print(" 📦 std.filesystem - File system operations")print(" 📦 std.process - Process management")print(" 📦 std.os - Operating system interface")print(" 📦 std.io - Input / output operations")print(" 📦 std.validation - Data validation")print(" 📦 std.encoding - Text encoding")print(" 📦 std.database - Database operations")print("") / /== == = KẾT LUẬN == == = print("🎉 KẾT LUẬN")print(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ")print("🚀 Zenith là một ngôn ngữ lập trình hiện đại với:")print(" ✅ Cú pháp đơn giản, dễ học")print(" ✅ Standard library đầy đủ")print(" ✅ Module system mạnh mẽ")print(" ✅ Auto - discovery không cần config")print(" ✅ Hỗ trợ network, crypto, file system")print(" ✅ Tương đương Python trong functionality")print("")print("📚 Để học thêm:")print(" - Đọc README.md trong lib / std / ")print(" - Xem examples trong lib / std / examples / ")print(" - Chạy test: . / target / release / zenith run lib / std / test_all_modules.zn")print("")print("🎯 Chúc bạn lập trình hiệu quả với Zenith ! ")print(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ");

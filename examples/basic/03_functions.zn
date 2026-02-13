@@ -1,0 +1,29 @@
+// 03_functions.zn - Functions
+
+// A simple function
+func greet(name) {
+    println("Hello, " + name + "!")
+}
+
+// A function with return value
+func add(a, b) {
+    return a + b
+}
+
+// Recursive function
+func factorial(n) {
+    if (n <= 1) {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+func main() {
+    greet("User")
+    
+    var sum = add(10, 20)
+    println("10 + 20 = " + sum)
+    
+    var f5 = factorial(5)
+    println("Factorial of 5 is: " + f5)
+}

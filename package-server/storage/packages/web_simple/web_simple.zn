@@ -1,0 +1,68 @@
+// Zenith Standard Library — Web Framework Module (Simple)
+// Basic web framework functions
+
+import std.http
+import std.json
+
+// HTTP response helpers
+func create_response(status_code, body) {
+    var response = {
+        "status": status_code,
+        "body": body
+    }
+    return response
+}
+
+func json_response_simple(data) {
+    var json_body = stringify(data)
+    return create_response(200, json_body)
+}
+
+func html_response_simple(html_content) {
+    return create_response(200, html_content)
+}
+
+// HTML generation helpers
+func html_tag_simple(tag, content) {
+    return "<" + tag + ">" + content + "</" + tag + ">"
+}
+
+func html_doctype_simple() {
+    return "<!DOCTYPE html>"
+}
+
+func html_head_simple(title) {
+    var head_content = html_tag_simple("title", title)
+    return html_tag_simple("head", head_content)
+}
+
+func html_body_simple(content) {
+    return html_tag_simple("body", content)
+}
+
+func html_page_simple(title, body_content) {
+    var doctype = html_doctype_simple()
+    var head = html_head_simple(title)
+    var body = html_body_simple(body_content)
+    return doctype + "<html>" + head + body + "</html>"
+}
+
+// Test
+func test_web_simple() {
+    print("=== Web Framework Module Test ===")
+
+    // Test response creation
+    var json_resp = json_response_simple( {"message": "Hello Zenith"} )
+    print("JSON response created: " + str(json_resp["status"]))
+
+    var html_resp = html_response_simple("<h1>Hello World</h1>")
+    print("HTML response created: " + str(html_resp["status"]))
+
+    // Test HTML generation
+    var page = html_page_simple("Test Page", "<p>Welcome to Zenith Web Framework</p>")
+    print("HTML page length: " + str(len(page)))
+
+    print("Web framework test completed!")
+}
+
+test_web_simple()

@@ -1,0 +1,26 @@
+// Zenith Standard Library — Cryptography Module
+// Basic cryptographic operations
+
+func hash_string(s) {
+    return sys_exec("echo -n '" + s + "' | md5sum | cut -d' ' -f1")
+}
+
+func base64_encode(s) {
+    return sys_exec("echo -n '" + s + "' | base64")
+}
+
+func base64_decode(s) {
+    return sys_exec("echo -n '" + s + "' | base64 -d")
+}
+
+func generate_uuid() {
+    return sys_exec("uuidgen")
+}
+
+func hmac_sha256(key, message) {
+    return sys_exec("echo -n '" + message + "' | openssl dgst -sha256 -hmac '" + key + "'")
+}
+
+func sha256(s) {
+    return sys_exec("echo -n '" + s + "' | sha256sum | cut -d' ' -f1")
+}

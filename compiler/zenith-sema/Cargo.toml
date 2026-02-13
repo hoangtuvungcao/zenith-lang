@@ -1,0 +1,13 @@
+[package]
+name = "zenith-sema"
+version = "0.1.0"
+edition = "2021"
+description = "Zenith programming language semantic analyzer"
+license = "MIT"
+authors = ["Zenith Team"]
+
+[dependencies]
+zenith-lexer = { path = "../zenith-lexer" }
+zenith-parser = { path = "../zenith-parser" }
+thiserror = "1.0"
+tracing = "0.1"

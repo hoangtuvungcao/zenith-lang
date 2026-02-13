@@ -1,0 +1,61 @@
+// Zenith Standard Library — Database Module
+// Simple database operations using SQLite
+
+import std.string
+
+func sqlite_query(db_path, query) {
+    return sys_exec("sqlite3 " + db_path + " '" + query + "'")
+}
+
+func sqlite_create_table(db_path, table_name, columns) {
+    var query = "CREATE TABLE IF NOT EXISTS " + table_name + " (" + columns + ")"
+    return sqlite_query(db_path, query)
+}
+
+func sqlite_insert(db_path, table_name, values) {
+    var query = "INSERT INTO " + table_name + " VALUES (" + values + ")"
+    return sqlite_query(db_path, query)
+}
+
+func sqlite_select(db_path, table_name, where_clause) {
+    var query = "SELECT * FROM " + table_name
+    if len(where_clause) > 0 {
+        query = query + " WHERE " + where_clause
+    }
+    return sqlite_query(db_path, query)
+}
+
+func sqlite_update(db_path, table_name, set_clause, where_clause) {
+    var query = "UPDATE " + table_name + " SET " + set_clause
+    if len(where_clause) > 0 {
+        query = query + " WHERE " + where_clause
+    }
+    return sqlite_query(db_path, query)
+}
+
+func sqlite_delete(db_path, table_name, where_clause) {
+    var query = "DELETE FROM " + table_name
+    if len(where_clause) > 0 {
+        query = query + " WHERE " + where_clause
+    }
+    return sqlite_query(db_path, query)
+}
+
+func sqlite_table_exists(db_path, table_name) {
+    var query = "SELECT name FROM sqlite_master WHERE type='table' AND name='" + table_name + "'"
+    var result = sqlite_query(db_path, query)
+    return len(result) > 0
+}
+
+func sqlite_table_info(db_path, table_name) {
+    var query = "PRAGMA table_info(" + table_name + ")"
+    return sqlite_query(db_path, query)
+}
+
+func csv_to_array(csv_content) {
+    return csv_content
+}
+
+func array_to_csv(array_data) {
+    return array_data
+}

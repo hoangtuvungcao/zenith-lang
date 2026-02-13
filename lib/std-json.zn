@@ -1,0 +1,10 @@
+// Zenith Package: std-json
+// Version: 1.2.0
+
+func info() {
+    print("Loaded std-json v1.2.0");
+}
+
+func main() {
+    info();
+}

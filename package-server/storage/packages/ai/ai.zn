@@ -1,0 +1,71 @@
+// Zenith Standard Library — AI Module
+// Basic Artificial Intelligence utilities
+
+import std.math
+
+// Simple Statistics
+func mean(data) {
+    if len(data) == 0 {
+        return 0
+    }
+    return sum(data) / len(data)
+}
+
+// Simple Neural Network Functions
+func sigmoid(x) {
+    return 1 / (1 + pow(2.718281828, - x))
+}
+
+func relu(x) {
+    if x > 0 {
+        return x
+    } else {
+        return 0
+    }
+}
+
+// Simple Distance Function
+func simple_distance(a, b) {
+    var diff = a - b
+    if diff < 0 {
+        diff = - diff
+    }
+    return diff
+}
+
+// Text Processing
+func word_count_simple(text) {
+    var words = str_split(text, " ")
+    return len(words)
+}
+
+// Test function to verify module works
+func test_ai_module() {
+    print("Testing AI Module:")
+
+    // Test mean function
+    var data = [1, 2, 3, 4, 5]
+    var avg = mean(data)
+    print("Mean of [1,2,3,4,5]: " + str(avg))
+
+    // Test sigmoid
+    var sig = sigmoid(0.5)
+    print("Sigmoid(0.5): " + str(sig))
+
+    // Test relu
+    var rel = relu( - 2)
+    print("ReLU(-2): " + str(rel))
+
+    // Test distance
+    var dist = simple_distance(10, 3)
+    print("Distance(10,3): " + str(dist))
+
+    // Test word count
+    var count = word_count_simple("hello world test")
+    print("Word count: " + str(count))
+
+    print("AI Module test completed successfully!")
+}
+
+// Run test
+test_ai_module()

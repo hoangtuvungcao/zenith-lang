@@ -1,0 +1,227 @@
+// Phase D: Full GUI Framework Demo
+// This example showcases all new widgets implemented in the Zenith UI Renderer.
+
+import std.io
+import std.math
+
+// State indices
+var TAB_HOME = "Home"
+var TAB_WIDGETS = "Widgets"
+var TAB_DATA = "Data"
+
+var state_tab = create_state(TAB_HOME)
+var state_progress = create_state(0.4)
+var state_slider = create_state(50.0)
+var state_option = create_state("Option B")
+var state_checked = create_state(true)
+var state_window_open = create_state(false)
+var state_text = create_state("Hello from Zenith!")
+
+func main() {
+    render_loop()
+}
+
+func render_loop() {
+    while true {
+        var ui = {
+            "type": "Container",
+            "padding": 20,
+            "child": {
+                "type": "Column",
+                "spacing": 15,
+                "children": [
+                {
+                    "type": "Heading",
+                    "text": "Zenith Full GUI Demo",
+                    "level": 1
+                } ,
+                {
+                    "type": "Tabs",
+                    "value": get_state(state_tab),
+                    "on_change": "change_tab",
+                    "options": [TAB_HOME, TAB_WIDGETS, TAB_DATA],
+                    "content": {
+                        "Home": render_home_tab(),
+                        "Widgets": render_widgets_tab(),
+                        "Data": render_data_tab()
+                    }
+                } ,
+                {
+                    "type": "Separator"
+                } ,
+                {
+                    "type": "Row",
+                    "spacing": 10,
+                    "children": [
+                    {
+                        "type": "Button",
+                        "label": "Open Popup Window",
+                        "on_click": "open_window",
+                        "style": "primary"
+                    } ,
+                    {
+                        "type": "Text",
+                        "text": "Current Status: Active",
+                        "color": "green"
+                    }
+                    ]
+                }
+                ]
+            }
+        }
+
+        // Window (conditional)
+        if get_state(state_window_open) {
+            push(ui["child"]["children"], {
+                "type": "Window",
+                "title": "Config Details",
+                "open": true,
+                "on_close": "close_window",
+                "child": {
+                    "type": "Column",
+                    "spacing": 10,
+                    "children": [
+                    {"type": "Text", "text": "This is a native egui window!"} ,
+                    {"type": "TextField", "value": get_state(state_text), "on_change": "update_text"} ,
+                    {"type": "Button", "label": "Close", "on_click": "close_window"}
+                    ]
+                }
+            } )
+        }
+
+        render_ui(ui)
+        var event = wait_for_event()
+        handle_event(event)
+    }
+}
+
+func render_home_tab() {
+    return {
+        "type": "Column",
+        "spacing": 20,
+        "children": [
+        {
+            "type": "Card",
+            "child": {
+                "type": "Column",
+                "spacing": 10,
+                "children": [
+                {"type": "Heading", "text": "Welcome to Zenith v2.0", "level": 2} ,
+                {"type": "Text", "text": "Zenith now supports a complete suite of professional GUI widgets powered by egui."} ,
+                {"type": "Text", "text": "Switch tabs to explore the new capabilities!"}
+                ]
+            }
+        } ,
+        {
+            "type": "ProgressBar",
+            "value": get_state(state_progress),
+            "text": "System Loading...",
+            "animate": true
+        } ,
+        {
+            "type": "Row",
+            "spacing": 20,
+            "children": [
+            {"type": "Button", "label": "Progress -", "on_click": "dec_progress"} ,
+            {"type": "Button", "label": "Progress +", "on_click": "inc_progress", "style": "success"}
+            ]
+        }
+        ]
+    }
+}
+
+func render_widgets_tab() {
+    return {
+        "type": "ScrollView",
+        "child": {
+            "type": "Column",
+            "spacing": 15,
+            "children": [
+            {
+                "type": "CollapsingHeader",
+                "title": "Interactive Controls",
+                "child": {
+                    "type": "Column",
+                    "spacing": 10,
+                    "children": [
+                    {"type": "Slider", "text": "Power Level", "value": get_state(state_slider), "min": 0, "max": 100, "on_change": "update_slider"} ,
+                    {"type": "ComboBox", "label": "Select Mode", "value": get_state(state_option), "options": ["Option A", "Option B", "Option C"], "on_change": "update_option"} ,
+                    {"type": "Checkbox", "label": "Enable Debugging", "value": get_state(state_checked), "on_change": "update_checkbox"}
+                    ]
+                }
+            } ,
+            {
+                "type": "CollapsingHeader",
+                "title": "Display Layouts",
+                "child": {
+                    "type": "Grid",
+                    "spacing": 10,
+                    "striped": true,
+                    "children": [
+                    [
+                    {"type": "Text", "text": "ID", "bold": true} ,
+                    {"type": "Text", "text": "Name", "bold": true} ,
+                    {"type": "Text", "text": "Action", "bold": true}
+                    ],
+                    [
+                    {"type": "Text", "text": "001"} ,
+                    {"type": "Text", "text": "Zenith Base"} ,
+                    {"type": "Button", "label": "View"}
+                    ],
+                    [
+                    {"type": "Text", "text": "002"} ,
+                    {"type": "Text", "text": "Runtime Core"} ,
+                    {"type": "Button", "label": "View"}
+                    ]
+                    ]
+                }
+            }
+            ]
+        }
+    }
+}
+
+func render_data_tab() {
+    return {
+        "type": "Table",
+        "header": ["Key", "Value", "Status"],
+        "rows": [
+        ["Platform", sys_platform(), "Active"],
+        ["Architecture", sys_arch(), "Active"],
+        ["CWD", str_substr(sys_cwd(), 0, 20) + "...", "Static"],
+        ["Slider Value", str(get_state(state_slider)), "Dynamic"],
+        ["Checkbox", str(get_state(state_checked)), "Dynamic"]
+        ]
+    }
+}
+
+func handle_event(event) {
+    if event == null { return }
+    var action = event["id"]
+    var payload = event["value"]
+    var type = event["type"]
+
+    if action == "change_tab" {
+        set_state(state_tab, payload)
+    } else if action == "update_slider" {
+        set_state(state_slider, parse_float(payload))
+    } else if action == "update_option" {
+        set_state(state_option, payload)
+    } else if action == "update_checkbox" {
+        if payload == "true" {
+            set_state(state_checked, true)
+        } else {
+            set_state(state_checked, false)
+        }
+    } else if action == "inc_progress" {
+        set_state(state_progress, get_state(state_progress) + 0.1)
+    } else if action == "dec_progress" {
+        set_state(state_progress, get_state(state_progress) - 0.1)
+    } else if action == "open_window" {
+        set_state(state_window_open, true)
+    } else if action == "close_window" {
+        set_state(state_window_open, false)
+    } else if action == "update_text" {
+        set_state(state_text, payload)
+    }
+}

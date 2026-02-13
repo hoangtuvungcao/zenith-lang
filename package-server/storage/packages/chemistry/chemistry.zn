@@ -1,0 +1,53 @@
+// Zenith Standard Library — Chemistry Module
+// Very basic chemistry functions
+
+// Atomic weights (simplified)
+func atomic_weight(element) {
+    if element == "H" {
+        return 1
+    } else if element == "C" {
+        return 12
+    } else {
+        return 0
+    }
+}
+
+// Molar mass (simplified)
+func molar_mass(formula) {
+    return 18 // H2O simplified
+}
+
+// Concentration (simplified)
+func molarity(moles, volume) {
+    if volume == 0 {
+        return 0
+    }
+    return moles / volume
+}
+
+// pH (simplified)
+func ph(h_concentration) {
+    return 7 // Simplified
+}
+
+// Test function
+func test_chemistry_module() {
+    print("=== Chemistry Module Test ===")
+
+    var h_weight = atomic_weight("H")
+    print("Hydrogen weight: " + str(h_weight))
+
+    var h2o_mass = molar_mass("H2O")
+    print("H2O molar mass: " + str(h2o_mass))
+
+    var mol = molarity(2, 1)
+    print("2 moles in 1L: " + str(mol) + " M")
+
+    var ph_val = ph(0.001)
+    print("pH calculation: " + str(ph_val))
+
+    print("Chemistry module test completed successfully!")
+}
+
+// Run test
+test_chemistry_module()

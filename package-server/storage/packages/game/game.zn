@@ -1,0 +1,322 @@
+// Zenith Standard Library — Game Module (Fixed)
+// Usage: import std.game_fixed
+// Provides game development utilities and functions
+
+import std.math
+import std.graphics
+import std.array
+import std.filesystem
+
+// Game state management
+func create_game_state(width, height) {
+    return {
+        "width": width,
+        "height": height,
+        "score": 0,
+        "level": 1,
+        "is_paused": false,
+        "is_game_over": false,
+        "time_elapsed": 0
+    }
+}
+
+func update_score(state, points) {
+    return {
+        "width": state["width"],
+        "height": state["height"],
+        "score": state["score"] + points,
+        "level": state["level"],
+        "is_paused": state["is_paused"],
+        "is_game_over": state["is_game_over"],
+        "time_elapsed": state["time_elapsed"]
+    }
+}
+
+func next_level(state) {
+    return {
+        "width": state["width"],
+        "height": state["height"],
+        "score": state["score"],
+        "level": state["level"] + 1,
+        "is_paused": state["is_paused"],
+        "is_game_over": state["is_game_over"],
+        "time_elapsed": state["time_elapsed"]
+    }
+}
+
+func toggle_pause(state) {
+    return {
+        "width": state["width"],
+        "height": state["height"],
+        "score": state["score"],
+        "level": state["level"],
+        "is_paused": !state["is_paused"],
+        "is_game_over": state["is_game_over"],
+        "time_elapsed": state["time_elapsed"]
+    }
+}
+
+func game_over(state) {
+    return {
+        "width": state["width"],
+        "height": state["height"],
+        "score": state["score"],
+        "level": state["level"],
+        "is_paused": state["is_paused"],
+        "is_game_over": true,
+        "time_elapsed": state["time_elapsed"]
+    }
+}
+
+// Grid-based game utilities
+func create_grid(width, height, default_value) {
+    var grid = []
+    for y in 0..height {
+        var row = []
+        for x in 0..width {
+            row = push(row, default_value)
+        }
+        grid = push(grid, row)
+    }
+    return grid
+}
+
+func get_cell(grid, x, y) {
+    if (y >= 0 && y < len(grid) && x >= 0 && x < len(grid[y])) {
+        return grid[y][x]
+    }
+    return null
+}
+
+func set_cell(grid, x, y, value) {
+    var new_grid = []
+    for gy in 0..len(grid) {
+        var row = grid[gy]
+        if (gy == y && x >= 0 && x < len(row)) {
+            var new_row = []
+            for gx in 0..len(row) {
+                if (gx == x) {
+                    new_row = push(new_row, value)
+                } else {
+                    new_row = push(new_row, row[gx])
+                }
+            }
+            new_grid = push(new_grid, new_row)
+        } else {
+            new_grid = push(new_grid, row)
+        }
+    }
+    return new_grid
+}
+
+// Collision detection
+func point_in_rect(px, py, rx, ry, rw, rh) {
+    return px >= rx && px <= rx + rw && py >= ry && py <= ry + rh
+}
+
+func rect_collision(x1, y1, w1, h1, x2, y2, w2, h2) {
+    return x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2
+}
+
+func circle_collision(x1, y1, r1, x2, y2, r2) {
+    var dx = x2 - x1
+    var dy = y2 - y1
+    var distance = sqrt(dx * dx + dy * dy)
+    return distance < r1 + r2
+}
+
+// Animation utilities
+func create_animation(frames, frame_duration) {
+    return {
+        "frames": frames,
+        "current_frame": 0,
+        "frame_duration": frame_duration,
+        "time_since_last_frame": 0,
+        "is_playing": true
+    }
+}
+
+func update_animation(animation, delta_time) {
+    if (!animation["is_playing"]) {
+        return animation
+    }
+    
+    var new_time = animation["time_since_last_frame"] + delta_time
+    var new_frame = animation["current_frame"]
+    
+    if (new_time >= animation["frame_duration"]) {
+        new_frame = (animation["current_frame"] + 1) % len(animation["frames"])
+        new_time = 0
+    }
+    
+    return {
+        "frames": animation["frames"],
+        "current_frame": new_frame,
+        "frame_duration": animation["frame_duration"],
+        "time_since_last_frame": new_time,
+        "is_playing": animation["is_playing"]
+    }
+}
+
+func get_current_frame(animation) {
+    return animation["frames"][animation["current_frame"]]
+}
+
+// Input handling
+func create_input_handler() {
+    return {
+        "keys_pressed": [],
+        "keys_released": [],
+        "mouse_x": 0,
+        "mouse_y": 0,
+        "mouse_clicked": false
+    }
+}
+
+func is_key_pressed(input, key) {
+    return contains(input["keys_pressed"], key)
+}
+
+func is_key_released(input, key) {
+    return contains(input["keys_released"], key)
+}
+
+func get_mouse_position(input) {
+    return {
+        "x": input["mouse_x"],
+        "y": input["mouse_y"]
+    }
+}
+
+// Random utilities for games
+func random_int(min, max) {
+    // Very simple deterministic random
+    return ((min + max) / 2) % (max - min + 1) + min
+}
+
+func random_choice(array) {
+    if (len(array) == 0) { return null }
+    var index = random_int(0, len(array) - 1)
+    return array[index]
+}
+
+func shuffle_array(array) {
+    var shuffled = []
+    for i in 0..len(array) {
+        shuffled = push(shuffled, array[i])
+    }
+    for i in 0..len(shuffled) {
+        var j = random_int(0, len(shuffled) - 1)
+        var temp = shuffled[i]
+        shuffled[i] = shuffled[j]
+        shuffled[j] = temp
+    }
+    return shuffled
+}
+
+func reverse_arr(array) {
+    var reversed = []
+    for i in len(array)-1..-1 {
+        reversed = push(reversed, array[i])
+    }
+    return reversed
+}
+
+// Game loop utilities
+func create_game_loop(target_fps) {
+    return {
+        "target_fps": target_fps,
+        "frame_time": 1000.0 / target_fps,
+        "last_time": 0,
+        "accumulator": 0
+    }
+}
+
+func should_update(game_loop, current_time) {
+    var delta_time = current_time - game_loop["last_time"]
+    return delta_time >= game_loop["frame_time"]
+}
+
+// Simple AI utilities (simplified pathfinding)
+func find_path(grid, start_x, start_y, end_x, end_y) {
+    // Return simple path - just the start and end points
+    return [
+        {"x": start_x, "y": start_y},
+        {"x": end_x, "y": end_y}
+    ]
+}
+
+// Particle system
+func create_particle_system(max_particles) {
+    return {
+        "particles": [],
+        "max_particles": max_particles,
+        "emission_rate": 10,
+        "time_since_emission": 0
+    }
+}
+
+func emit_particle(system, x, y, vx, vy, lifetime, color) {
+    if (len(system["particles"]) >= system["max_particles"]) {
+        var new_particles = []
+        for i in 1..len(system["particles"]) {
+            new_particles = push(new_particles, system["particles"][i])
+        }
+        system["particles"] = new_particles
+    }
+    
+    var particle = {
+        "x": x,
+        "y": y,
+        "vx": vx,
+        "vy": vy,
+        "lifetime": lifetime,
+        "age": 0,
+        "color": color
+    }
+    
+    system["particles"] = push(system["particles"], particle)
+}
+
+func update_particles(system, delta_time) {
+    var updated_particles = []
+    for particle in system["particles"] {
+        var updated = {
+            "x": particle["x"] + particle["vx"] * delta_time,
+            "y": particle["y"] + particle["vy"] * delta_time,
+            "vx": particle["vx"],
+            "vy": particle["vy"],
+            "lifetime": particle["lifetime"],
+            "age": particle["age"] + delta_time,
+            "color": particle["color"]
+        }
+        
+        if (updated["age"] < updated["lifetime"]) {
+            updated_particles = push(updated_particles, updated)
+        }
+    }
+    system["particles"] = updated_particles
+}
+
+// Sound utilities
+func play_sound(sound_file) {
+    println("Playing sound: " + sound_file)
+}
+
+func play_music(music_file, loop) {
+    println("Playing music: " + music_file + " (loop: " + str(loop) + ")")
+}
+
+// Save/Load game state
+func save_game(state, filename) {
+    var json_str = str(state)
+    write_file(filename, json_str)
+}
+
+func load_game(filename) {
+    if (file_exists(filename)) {
+        var json_str = read_file(filename)
+        return {"loaded": true, "data": json_str}
+    }
+    return null
+}

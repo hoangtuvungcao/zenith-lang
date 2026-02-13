@@ -1,0 +1,40 @@
+// 02_control_flow.zn - Logic and Loops
+// Run with: cargo run -p zenith -- run examples/02_control_flow.zn
+
+func main() {
+    // 1. If / Else Statements
+    var score = 85
+
+    if (score >= 90) {
+        println("Grade: A")
+    } else if (score >= 80) {
+        println("Grade: B")
+    } else {
+        println("Grade: C")
+    }
+
+    // 2. While Loops
+    println("\n--- While Loop ---")
+    var counter = 3
+    while (counter > 0) {
+        println("Countdown: " + counter)
+        counter = counter - 1
+    }
+    println("Liftoff!")
+
+    // 3. For Loops (Range)
+    println("\n--- For Loop (Range) ---")
+    for i in 0..5 {
+        println("Iteration: " + i)
+    }
+
+    // 4. For Loops (Array Iteration)
+    // Note: Standard array iteration is manual for now until iterators are fully stabilized
+    println("\n--- Array Iteration ---")
+    var fruits = ["Mango", "Kiwi", "Grape"]
+    for i in 0..len(fruits) {
+        println("Fruit: " + fruits[i])
+    }
+}
+
+main()
