@@ -5,6 +5,5 @@ node_modules/
 package-server/node_modules/
 vscode-extension/node_modules/
 vscode-extension/out/
-# package-server/storage/ # Should we keep the storage? User said "everything". 
-# Maybe keep database.json but exclude the big zip files if any?
+# package-server/storage/
 # For now, let's keep it simple.
